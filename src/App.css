@@ -1,0 +1,23 @@
+li {
+  list-style: cross-fade();
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 1200px;
+  background-color: cornflowerblue;
+  display: grid;
+  grid-template-areas: 
+  'head'
+  'cont';
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 5fr;
+}
+
+.main {
+    grid-area: cont;
+    background-color: green;
+}
+
+
+

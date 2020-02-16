@@ -1,0 +1,12 @@
+.item {
+    color: white;
+}
+
+.item a {
+    color: plum;
+    text-decoration: none;
+}
+
+a.active {
+    color: gold;
+}
