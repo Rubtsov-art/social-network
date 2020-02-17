@@ -8,9 +8,9 @@ li {
   background-color: cornflowerblue;
   display: grid;
   grid-template-areas: 
-  'head'
-  'cont';
-  grid-template-columns: 1fr;
+  'head head head'
+  'friends cont commercial';
+  grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 5fr;
 }
 

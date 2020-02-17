@@ -6,7 +6,7 @@ let state = {
             { id: '3', message: 'third post' },
         ],
     },
-    
+
     messagesPage: {
 
         dialogListData: [
@@ -14,11 +14,19 @@ let state = {
             { link: '/messages/irina', user: 'Irina' },
             { link: '/messages/vitia', user: 'Vitia' },
         ],
-    
+
         messageData: [
             { id: '1', message: 'Privet', },
             { id: '2', message: 'I am Irina' },
             { id: '3', message: 'I am Vitia' },
+        ],
+    },
+
+    friendsList: {
+        friends: [
+            { name: 'Pasha' },
+            { name: 'Irina' },
+            { name: 'Vitia' },
         ],
     }
 
