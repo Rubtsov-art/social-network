@@ -1,4 +1,6 @@
-import {renderAllPage} from "../renderAllPage";
+let renderAllPage = () => {
+    console.log('state changed')
+};
 
 
 let state = {
@@ -38,7 +40,7 @@ let state = {
     
 };
 
-export let addPost = () => {
+export const addPost = () => {
     debugger;
     let newPost = {
         id: '4', 
@@ -48,9 +50,13 @@ export let addPost = () => {
     renderAllPage(state);
 };
 
-export let changeInTextarea = (text) => {
+export const changeInTextarea = (text) => {
     state.profilePage.postFieldValue = text;
     renderAllPage(state);
+};
+
+export const subscribe = (observer) => {
+    renderAllPage = observer;
 };
 
 export default state
