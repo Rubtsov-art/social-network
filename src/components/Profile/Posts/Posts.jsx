@@ -4,20 +4,27 @@ import Post from './Post/Post';
 
 const Posts = (props) => {
   
-let postListItem = props.postNumber.postsData.map((p) => <Post message={p.message}/>);
+let postListItem = props.profilePage.postsData.map((p) => <Post message={p.message}/>);
 
 let newPost = React.createRef();
 
-let addPost = () => {
-  alert(newPost.current.value)
+
+let readPost = () => {
+  props.addPost();
+  props.changeInTextarea('')
+};
+
+let changePostField = () => {
+  let text = newPost.current.value;
+  props.changeInTextarea(text)
 };
 
   return (
       <section className={style.post}>
           <div>
-            <textarea ref={newPost}></textarea>
+            <textarea ref={newPost} value= {props.profilePage.postFieldValue} onChange={changePostField} />
           </div>
-          <button onClick={addPost}>Post</button>
+          <button onClick={readPost}>Post</button>
           <ul className={style.posts_list}>
           {postListItem}
           </ul>

@@ -1,3 +1,6 @@
+import {renderAllPage} from "../renderAllPage";
+
+
 let state = {
     profilePage: {
         postsData: [
@@ -5,6 +8,8 @@ let state = {
             { id: '2', message: 'second post' },
             { id: '3', message: 'third post' },
         ],
+
+        postFieldValue: "write post",
     },
 
     messagesPage: {
@@ -28,9 +33,24 @@ let state = {
             { name: 'Irina' },
             { name: 'Vitia' },
         ],
-    }
+    },
 
     
+};
+
+export let addPost = () => {
+    debugger;
+    let newPost = {
+        id: '4', 
+        message: state.profilePage.postFieldValue,
+    };
+    state.profilePage.postsData.push(newPost);
+    renderAllPage(state);
+};
+
+export let changeInTextarea = (text) => {
+    state.profilePage.postFieldValue = text;
+    renderAllPage(state);
 };
 
 export default state
