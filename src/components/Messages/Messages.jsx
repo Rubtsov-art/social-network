@@ -7,7 +7,7 @@ import MessageList from './MassageList/MessageList';
 const Messages = (props) => {
   return (
     <section className={style.main_content}>
-      <DialogsList dialogListData={props.state.dialogListData}/>
+      <DialogsList messagesPage={props.state} dispatch={props.dispatch}/>
       <MessageList messageData={props.state.messageData}/>
     </section>
   )

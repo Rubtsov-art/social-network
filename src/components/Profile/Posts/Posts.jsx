@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Posts.module.css'
 import Post from './Post/Post';
+import {actionCreatorAddPost, actionCreatorChangeInTextarea} from './../../../redax/state';
 
 const Posts = (props) => {
   
@@ -10,13 +11,13 @@ let newPost = React.createRef();
 
 
 let readPost = () => {
-  props.dispatch({type: 'ADD-POST'});
-  props.dispatch({type: 'CHANGE-IN-TEXTAREA', newText: ''});
+  props.dispatch(actionCreatorAddPost());
+  props.dispatch(actionCreatorChangeInTextarea(''));
 };
 
 let changePostField = () => {
   let text = newPost.current.value;
-  props.dispatch({type: 'CHANGE-IN-TEXTAREA', newText: text});
+  props.dispatch(actionCreatorChangeInTextarea(text));
 };
 
   return (
