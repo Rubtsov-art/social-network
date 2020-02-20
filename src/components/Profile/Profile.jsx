@@ -9,7 +9,7 @@ const Profile = (props) => {
   return (
     <section className={style.main_content}>
       <Avatar />
-      <Posts profilePage={props.state} addPost={props.addPost} changeInTextarea={props.changeInTextarea}/>
+      <Posts profilePage={props.state} dispatch = {props.dispatch}/>
     </section>
   )
 };

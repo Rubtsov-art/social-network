@@ -10,13 +10,13 @@ let newPost = React.createRef();
 
 
 let readPost = () => {
-  props.addPost();
-  props.changeInTextarea('')
+  props.dispatch({type: 'ADD-POST'});
+  props.dispatch({type: 'CHANGE-IN-TEXTAREA', newText: ''});
 };
 
 let changePostField = () => {
   let text = newPost.current.value;
-  props.changeInTextarea(text)
+  props.dispatch({type: 'CHANGE-IN-TEXTAREA', newText: text});
 };
 
   return (

@@ -6,11 +6,11 @@ import './index.css';
 import App from './App';
 
 let renderAllPage = (state) => {
-    ReactDOM.render(<App 
-        state={state} addPost={store.addPost.bind(store)} changeInTextarea={store.changeInTextarea.bind(store)}
-    />, document.getElementById('root'));
+    ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} />, 
+    document.getElementById('root'));
     };
     
+
+renderAllPage(store.getState());
 store.subscribe(renderAllPage);
-store._collSubscriber(store.getState());
 serviceWorker.unregister();

@@ -47,23 +47,37 @@ let store = {
         return this._state;
     },
 
-    addPost () {
-        let newPost = {
-            id: '4', 
-            message: this.getState().profilePage.postFieldValue,
-        };
-        this.getState().profilePage.postsData.push(newPost);
-        this._collSubscriber(this.getState());
-    },
+    // addPost () {
+    //     let newPost = {
+    //         id: '4', 
+    //         message: this.getState().profilePage.postFieldValue,
+    //     };
+    //     this.getState().profilePage.postsData.push(newPost);
+    //     this._collSubscriber(this.getState());
+    // },
 
-    changeInTextarea (text) {
-        this.getState().profilePage.postFieldValue = text;
-        this._collSubscriber(this.getState());
-    },
+    // changeInTextarea (text) {
+    //     this.getState().profilePage.postFieldValue = text;
+    //     this._collSubscriber(this.getState());
+    // },
 
     subscribe (observer) {
         this._collSubscriber = observer;
     },
+
+    dispatch (action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: '4', 
+                message: this.getState().profilePage.postFieldValue,
+            };
+            this.getState().profilePage.postsData.push(newPost);
+            this._collSubscriber(this.getState());
+        } else if (action.type === 'CHANGE-IN-TEXTAREA') {
+            this.getState().profilePage.postFieldValue = action.newText;
+            this._collSubscriber(this.getState());
+        }
+    }
 
 };
 
