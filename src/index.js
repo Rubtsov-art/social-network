@@ -1,5 +1,5 @@
 import * as serviceWorker from './serviceWorker';
-import store from './redax/state';
+import store from './redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -12,5 +12,8 @@ let renderAllPage = (state) => {
     
 
 renderAllPage(store.getState());
-store.subscribe(renderAllPage);
+store.subscribe(() => {
+    let state = store.getState();
+    renderAllPage(state)
+});
 serviceWorker.unregister();

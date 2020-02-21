@@ -1,7 +1,23 @@
 const ADD_INTERLOCUTOR = 'ADD-INTERLOCUTOR';
 const CHANGE_IN_DIALOG_FIELD = 'CHANGE-IN-DIALOG-FIELD';
 
-const messagesReducer = (state, action) => {
+let initialState = {
+    dialogListData: [
+        { link: '/messages/pasha', user: 'Pasha' },
+        { link: '/messages/irina', user: 'Irina' },
+        { link: '/messages/vitia', user: 'Vitia' },
+    ],
+
+    postFieldValue: '',
+
+    messageData: [
+        { id: '1', message: 'Privet', },
+        { id: '2', message: 'I am Irina' },
+        { id: '3', message: 'I am Vitia' },
+    ],
+}
+
+const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_INTERLOCUTOR:
             let newInterlocutor = {
