@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import style from './DialogsList.module.css'
 import Dialog from './Dialog/Dialog';
-import { actionCreatorAddInterlocutor, actionCreatorChangeInDialogList } from '../../../redax/state';
+import { actionCreatorAddInterlocutor, actionCreatorChangeInDialogList } from '../../../redax/messagesReducer';
 
 
 const DialogsList = (props) => {
