@@ -6,7 +6,7 @@ import './index.css';
 import App from './App';
 
 let renderAllPage = (state) => {
-    ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} />, 
+    ReactDOM.render(<App store={store} />, 
     document.getElementById('root'));
     };
     

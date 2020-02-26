@@ -11,6 +11,6 @@ let reducers = combineReducers({
     friendsList: friendsListReducer,
 });
 
-let store = createStore();
+let store = createStore(reducers);
 
 export default store;

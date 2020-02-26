@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import style from './DialogsList.module.css'
 import Dialog from './Dialog/Dialog';
-import { actionCreatorAddInterlocutor, actionCreatorChangeInDialogList } from '../../../redux/messagesReducer';
+
 
 
 const DialogsList = (props) => {
@@ -11,14 +11,14 @@ const DialogsList = (props) => {
   let newDialog = React.createRef();
 
   let addInterlocutor = () => {
-    props.dispatch(actionCreatorAddInterlocutor());
-    props.dispatch(actionCreatorChangeInDialogList(''));
+    props.addInterlocutor();
   };
 
   let changeDialogField = () => {
     let name = newDialog.current.value;
-    props.dispatch(actionCreatorChangeInDialogList(name));
+    props.changeInDialogList(name);
   };
+
   
   return (
     <div>

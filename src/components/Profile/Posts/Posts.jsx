@@ -1,29 +1,28 @@
 import React from 'react';
-import style from './Posts.module.css'
+import style from './Posts.module.css';
 import Post from './Post/Post';
-import {actionCreatorAddPost, actionCreatorChangeInTextarea} from '../../../redux/profileReducer';
+
 
 const Posts = (props) => {
-  
-let postListItem = props.profilePage.postsData.map((p) => <Post message={p.message}/>);
+let postListItem = props.postsData.map((p) => <Post message={p.message}/>);
 
 let newPost = React.createRef();
 
 
 let readPost = () => {
-  props.dispatch(actionCreatorAddPost());
-  props.dispatch(actionCreatorChangeInTextarea(''));
+  props.addPost();
+  props.changeInTextArea('');
 };
 
 let changePostField = () => {
   let text = newPost.current.value;
-  props.dispatch(actionCreatorChangeInTextarea(text));
+  props.changeInTextArea(text);
 };
 
   return (
       <section className={style.post}>
           <div>
-            <textarea ref={newPost} value= {props.profilePage.postFieldValue} onChange={changePostField} />
+            <textarea ref={newPost} value={props.postFieldValue} onChange={changePostField} />
           </div>
           <button onClick={readPost}>Post</button>
           <ul className={style.posts_list}>

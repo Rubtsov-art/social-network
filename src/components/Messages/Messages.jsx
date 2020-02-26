@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './Messages.module.css'
-import DialogsList from './DialogsList/DialogsList';
+import DialogsListContainer from './DialogsList/DialogsListContainer';
 import MessageList from './MassageList/MessageList';
 
 
 const Messages = (props) => {
   return (
     <section className={style.main_content}>
-      <DialogsList messagesPage={props.state} dispatch={props.dispatch}/>
-      <MessageList messageData={props.state.messageData}/>
+      <DialogsListContainer store={props.store}/>
+      <MessageList messageData={props.store.getState().messageData}/>
     </section>
   )
 };

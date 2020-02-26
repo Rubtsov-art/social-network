@@ -17,11 +17,11 @@ const App = (props) => {
       <div className='wrapper'>
         <Header />
         <article>
-          <Friends state={props.state.friendsList.friends}/>
+          <Friends store={props.store}/>
         </article>
         <main className='main'>
-          <Route path='/profile' render={() => <Profile state={props.state.profilePage} dispatch = {props.dispatch} />} />
-          <Route path='/messages' render={() => <Messages state={props.state.messagesPage} dispatch = {props.dispatch} />} />
+          <Route path='/profile' render={() => <Profile store={props.store} />} />
+          <Route path='/messages' render={() => <Messages store={props.store} />} />
           <Route path='/settings' component={Settings} />
           <Route path='/music' component={Music} />
           <Route path='/photos' component={Photos} />
