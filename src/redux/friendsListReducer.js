@@ -9,7 +9,8 @@ let initialState = {
 const friendsListReducer = (state = initialState, action) => {
         switch (action.type) {
             case 1:
-                return state;
+                let stateCopy = {...state};
+                return stateCopy;
             default: return state;
         }
 }

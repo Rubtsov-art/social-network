@@ -4,16 +4,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-let renderAllPage = (state) => {
-    ReactDOM.render(<App store={store} />, 
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App store={store} />
+        </Provider>
+    </BrowserRouter>,
     document.getElementById('root'));
-    };
-    
 
-renderAllPage(store.getState());
-store.subscribe(() => {
-    let state = store.getState();
-    renderAllPage(state)
-});
 serviceWorker.unregister();

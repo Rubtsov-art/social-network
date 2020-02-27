@@ -1,22 +1,29 @@
 import React, { createRef } from 'react';
 import { actionCreatorAddInterlocutor, actionCreatorChangeInDialogList } from '../../../redux/messagesReducer';
 import DialogsList from './DialogsList';
+import {connect} from 'react-redux';
 
-const DialogsListContainer = (props) => {
-
-    let state = props.store.getState();
-    let postFieldValue = state.messagesPage.postFieldValue;
-
-    const addInterlocutor = () => {
-        props.store.dispatch(actionCreatorAddInterlocutor());
-        props.store.dispatch(actionCreatorChangeInDialogList(''));
-    };
-
-    const changeInDialogList = (name) => {
-        props.store.dispatch(actionCreatorChangeInDialogList(name));
+let mapStateToProps = (state) => {
+    return {
+        messagesPage: state.messagesPage,
+        postFieldValue: state.messagesPage.postFieldValue, 
     }
+};
 
-    return (<DialogsList messagesPage={state.messagesPage} changeInDialogList={changeInDialogList} addInterlocutor={addInterlocutor} postFieldValue={postFieldValue} />)
+let mapDispatchToProps = (dispatch) => {
+    return ({
+        changeInDialogList: (name) => {
+            dispatch(actionCreatorChangeInDialogList(name))
+        },
+        
+        addInterlocutor: () => {
+            dispatch(actionCreatorAddInterlocutor());
+            dispatch(actionCreatorChangeInDialogList(''));
+        }
+        
+    })
 }
+
+const DialogsListContainer = connect (mapStateToProps, mapDispatchToProps) (DialogsList);
 
 export default DialogsListContainer;
