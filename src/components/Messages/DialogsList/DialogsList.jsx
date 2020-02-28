@@ -6,7 +6,7 @@ import Dialog from './Dialog/Dialog';
 
 const DialogsList = (props) => {
 
-  let dialogListDataObj = props.messagesPage.dialogListData.map ( (d) => <Dialog link={d.link} user={d.user} />);
+  let dialogListDataObj = props.messagesPage.dialogListData.map ( (d) => <Dialog link={d.link} key={d.id} user={d.user} />);
 
   let newDialog = React.createRef();
 

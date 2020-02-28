@@ -24,15 +24,16 @@ const messagesReducer = (state = initialState, action) => {
                 link: '/messages/interlocutor',
                 user: state.postFieldValue,
             };
-            let stateCopy = {...state};
-            stateCopy.dialogListData = [...state.dialogListData];
-            stateCopy.dialogListData.push(newInterlocutor);
-            return stateCopy;
+            return ({
+                ...state,
+                dialogListData: [ ...state.dialogListData, newInterlocutor],
+            });
         }
         case CHANGE_IN_DIALOG_FIELD: {
-            let stateCopy = {...state};
-            stateCopy.postFieldValue = action.newName;
-            return stateCopy;
+            return ({
+                ...state,
+                postFieldValue: action.newName
+            })
         }
         default: return state;
     };

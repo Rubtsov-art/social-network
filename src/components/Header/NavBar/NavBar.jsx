@@ -11,6 +11,7 @@ const NavBar = () => {
         <NavItem link='/settings' text='settings' />
         <NavItem link='/music' text='music' />
         <NavItem link='/photos' text='photos' />
+        <NavItem link='/users' text='users' />
       </ul>
     </nav>
   )

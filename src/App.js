@@ -9,6 +9,7 @@ import Photos from './components/Photos/Photos';
 import Friends from './components/Friends/Friends';
 import Commercial from './components/Commercial/Commercial';
 import {Route} from 'react-router-dom';
+import Users from './components/Users/Users';
 
 
 const App = (props) => {
@@ -24,6 +25,7 @@ const App = (props) => {
         <Route path='/settings' component={Settings} />
         <Route path='/music' component={Music} />
         <Route path='/photos' component={Photos} />
+        <Route path='/users' render={() => <Users />} />
       </main>
       <article>
         <Commercial />

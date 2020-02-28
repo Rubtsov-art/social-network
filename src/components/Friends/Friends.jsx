@@ -4,7 +4,7 @@ import Friend from './Friend/Friend';
 
 const Friends = (props) => {
 
-   let friendName = props.store.getState().friendsList.friends.map ((el) => <Friend friendName={el.name}/>);
+   let friendName = props.store.getState().friendsList.friends.map ((el) => <Friend key={el.id} friendName={el.name}/>);
 
     return (
         <section className={style.friends}>
