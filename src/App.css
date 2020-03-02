@@ -11,7 +11,7 @@ li {
   'head head head'
   'friends cont commercial';
   grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows: 500px 5fr;
 }
 
 .main {
