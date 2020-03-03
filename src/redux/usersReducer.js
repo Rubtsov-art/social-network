@@ -49,23 +49,23 @@ const usersReducer = (state = initialState, action) => {
     };
 };
 
-export const friendAC = (userId) => {
+export const addFriend = (userId) => {
     return ({type: FRIEND, id: userId})
 };
 
-export const enemyAC = (userId) => {
+export const removeFriend = (userId) => {
     return ({type: ENEMY, id: userId})
 };
 
-export const setUsersAC = (usersData) => {
+export const setUsers = (usersData) => {
     return ({type: SET_USERS, usersData})
 }
 
-export const changeCurrantPageAC = (number) => {
+export const changeCurrantPage = (number) => {
     return ({type: CHANGE_CURRANT_PAGE, number})
 }
 
-export const setTotalItemsCountAC = (totalCount) => {
+export const setTotalItemsCount = (totalCount) => {
     return ({type: SET_TOTAL_ITEMS_COUNT, totalCount})
 }
 
