@@ -1,14 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import User from './User';
+import preloader from '../../../assets/images/preloader.gif'
 import * as axios from 'axios';
-import { addFriend, removeFriend, setUsers, changeCurrantPage, setTotalItemsCount } from '../../../redux/usersReducer';
+import { addFriend, removeFriend, setUsers, changeCurrantPage, setTotalItemsCount, toggleIsFetching } from '../../../redux/usersReducer';
 
 
 
 class UsersResponseAPI extends React.Component {
     componentDidMount = (props) => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currantPage}&count=${this.props.pageSize}`).then((response) => {
+        this.props.toggleIsFetching(true);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currantPage}&count=${this.props.pageSize}`)
+        .then((response) => {
+            this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)
             this.props.setTotalItemsCount(response.data.totalCount)
         });
@@ -16,18 +20,24 @@ class UsersResponseAPI extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.changeCurrantPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then((response) => {
+        this.props.toggleIsFetching(true);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        .then((response) => {
             this.props.setUsers(response.data.items)
+            this.props.toggleIsFetching(false)
         });
     };
     render = () => {
-        return (<User pageSize={this.props.pageSize}
+        return (<>
+        {this.props.isFetching?<div><img src={preloader}/></div>:null}
+         <User pageSize={this.props.pageSize}
             totalItemsCount={this.props.totalItemsCount}
             onPageChanged={this.onPageChanged}
             currantPage={this.props.currantPage}
             usersList={this.props.usersList}
             addFriend={this.props.addFriend}
-            removeFriend={this.props.removeFriend} />)
+            removeFriend={this.props.removeFriend} />
+        </>)
     }
 }
 
@@ -37,13 +47,15 @@ let mapStateToProps = (state) => {
         currantPage: state.usersPage.currantPage,
         pageSize: state.usersPage.pageSize,
         totalItemsCount: state.usersPage.totalItemsCount,
+        isFetching: state.usersPage.isFetching,
     })
 };
 
 export default connect(mapStateToProps, 
-    { addFriend,
+    {   addFriend,
         removeFriend,
         setUsers,
         changeCurrantPage,
         setTotalItemsCount,
+        toggleIsFetching,
     })(UsersResponseAPI)

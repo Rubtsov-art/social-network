@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './User.module.css'
-
 import defaultAvatar from '../../../assets/images/default-avatar.jpg'
 
 
@@ -16,10 +15,7 @@ const User = (props) => {
 
     let pagesNumberItem = pagesNumber.map((p) => <li><button onClick={() => { return (props.onPageChanged(p)) }} className={props.currantPage === p && style.currantPage}>{p}</button></li>);
     return (
-        <div>
-            <ul className={style.breadCramps}>
-                {pagesNumberItem}
-            </ul>
+        <>  
             <ul>
                 {props.usersList.map((u) => <li key={u.id}>
                     <div>
@@ -40,7 +36,10 @@ const User = (props) => {
                     </div>
                 </li>)}
             </ul>
-        </div>
+            <ul className={style.breadCramps}>
+                {pagesNumberItem}
+            </ul>
+        </>
     )
 }
 
