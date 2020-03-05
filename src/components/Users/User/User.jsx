@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './User.module.css'
 import defaultAvatar from '../../../assets/images/default-avatar.jpg'
+import { NavLink } from 'react-router-dom';
 
 
 const User = (props) => {
@@ -19,7 +20,9 @@ const User = (props) => {
             <ul>
                 {props.usersList.map((u) => <li key={u.id}>
                     <div>
+                        <NavLink to={'/profile/' + u.id}>
                         <img alt='avatar' className={style.avatar} src={u.photos.small != null ? u.photos.small : defaultAvatar} />
+                        </NavLink>
                         {u.friend
                             ? <button onClick={() => { props.removeFriend(u.id) }}>To enemy</button>
                             : <button onClick={() => { props.addFriend(u.id) }}>To friend</button>}

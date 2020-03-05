@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import User from './User';
-import preloader from '../../../assets/images/preloader.gif'
+import Preloader from '../../../reusingComponent/animation/Preloader'
 import * as axios from 'axios';
 import { addFriend, removeFriend, setUsers, changeCurrantPage, setTotalItemsCount, toggleIsFetching } from '../../../redux/usersReducer';
 
@@ -29,7 +29,7 @@ class UsersResponseAPI extends React.Component {
     };
     render = () => {
         return (<>
-        {this.props.isFetching?<div><img src={preloader}/></div>:null}
+        {this.props.isFetching?<Preloader/>:null}
          <User pageSize={this.props.pageSize}
             totalItemsCount={this.props.totalItemsCount}
             onPageChanged={this.onPageChanged}

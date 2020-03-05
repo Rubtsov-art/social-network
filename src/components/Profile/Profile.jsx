@@ -8,7 +8,7 @@ const Profile = (props) => {
 
   return (
     <section className={style.main_content}>
-      <Avatar />
+      <Avatar profile={props.profile}/>
       <PostsContainer store={props.store}/>
     </section>
   )

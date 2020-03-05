@@ -1,9 +1,13 @@
 import React from 'react';
 import style from './Avatar.module.css'
+import Preloader from '../../../reusingComponent/animation/Preloader';
 
-const Avatar = () => {
+const Avatar = (props) => {
+  if (!props.profile) {
+    return <Preloader/>
+  }
   return (
-    <img className={style.avatar} src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRddD41028t_uJygduJbHhuqdFxifsZXiGTWXOjeGZCYx2RaOtc' alt="you's photo"/>
+    <img className={style.avatar} src={props.profile.photos.large} alt="you's photo"/>
   )
 };
 

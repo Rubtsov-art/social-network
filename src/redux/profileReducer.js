@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_IN_TEXTAREA = 'CHANGE-IN-TEXTAREA';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
         postsData: [
@@ -9,6 +10,7 @@ let initialState = {
         ],
 
         postFieldValue: "write post",
+        profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -29,6 +31,9 @@ const profileReducer = (state = initialState, action) => {
                 postFieldValue: action.newText,
             })
         }
+        case SET_USER_PROFILE: {
+            return ({...state, profile: action.profile})
+        }
         default: return state;
         
     };
@@ -41,5 +46,9 @@ export const actionCreatorAddPost = () => {
 export const actionCreatorChangeInTextarea = (text) => {
     return ({type: CHANGE_IN_TEXTAREA, newText: text})
 };
+
+export const setUserProfile = (profile) => {
+    return ({type: SET_USER_PROFILE, profile})
+}
 
 export default profileReducer;
