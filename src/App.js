@@ -20,7 +20,7 @@ const App = (props) => {
         <Friends store={props.store} />
       </article>
       <main className='main'>
-        <Route path='/profile' render={() => <ProfileContainer store={props.store} />} />
+        <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
         <Route path='/messages' render={() => <Messages store={props.store} />} />
         <Route path='/settings' component={Settings} />
         <Route path='/music' component={Music} />
