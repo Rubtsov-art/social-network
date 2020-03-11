@@ -3,6 +3,7 @@ import style from './User.module.css'
 import defaultAvatar from '../../../assets/images/default-avatar.jpg'
 import { NavLink } from 'react-router-dom';
 import * as axios from 'axios';
+import { usersAPI } from '../../../api/api';
 
 
 const User = (props) => {
@@ -26,12 +27,7 @@ const User = (props) => {
                         </NavLink>
                         {u.friend
                             ? <button onClick={() => { 
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': 'b819823f-20b4-4e7f-a854-8954cb168bf2'
-                                    },
-                                })
+                               usersAPI.toEnemy(u.id)
                                     .then((response) => {
                                         if (response.data.resultCode === 0) {
                                             props.removeFriend(u.id)
@@ -42,9 +38,10 @@ const User = (props) => {
                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                     withCredentials: true,
                                     headers: {
-                                        'API-KEY': 'b819823f-20b4-4e7f-a854-8954cb168bf2'
+                                        'API-KEY': '3f4f3bf6-035a-4f75-a534-7545a1c1a8c4'
                                     },
                                 })
+                                //usersAPI.toFriend(u.id)
                                     .then((response) => {
                                         if (response.data.resultCode === 0) {
                                             props.addFriend(u.id)
