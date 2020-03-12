@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import User from './User';
 import Preloader from '../../../reusingComponent/animation/Preloader';
-import { addFriend, removeFriend, setUsers, changeCurrantPage, setTotalItemsCount, toggleIsFetching } from '../../../redux/usersReducer';
+import { addFriend, removeFriend, setUsers, changeCurrantPage, setTotalItemsCount, toggleIsFetching, toggleAddFriendInProgress } from '../../../redux/usersReducer';
 import { usersAPI } from '../../../api/api';
 
 
@@ -38,7 +38,9 @@ class UsersResponseAPI extends React.Component {
                 currantPage={this.props.currantPage}
                 usersList={this.props.usersList}
                 addFriend={this.props.addFriend}
-                removeFriend={this.props.removeFriend} />
+                removeFriend={this.props.removeFriend}
+                isFollowingInProgress={this.props.isFollowingInProgress}
+                toggleAddFriendInProgress={this.props.toggleAddFriendInProgress} />
         </>)
     }
 }
@@ -50,6 +52,7 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalItemsCount: state.usersPage.totalItemsCount,
         isFetching: state.usersPage.isFetching,
+        isFollowingInProgress: state.usersPage.isFollowingInProgress,
     })
 };
 
@@ -61,4 +64,5 @@ export default connect(mapStateToProps,
         changeCurrantPage,
         setTotalItemsCount,
         toggleIsFetching,
+        toggleAddFriendInProgress,
     })(UsersResponseAPI)

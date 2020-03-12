@@ -2,7 +2,6 @@ import React from 'react';
 import style from './User.module.css'
 import defaultAvatar from '../../../assets/images/default-avatar.jpg'
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
 import { usersAPI } from '../../../api/api';
 
 
@@ -26,26 +25,25 @@ const User = (props) => {
                             <img alt='avatar' className={style.avatar} src={u.photos.small != null ? u.photos.small : defaultAvatar} />
                         </NavLink>
                         {u.friend
-                            ? <button onClick={() => { 
-                               usersAPI.toEnemy(u.id)
+                            ? <button disabled={props.isFollowingInProgress.some(id => id ===u.id)} onClick={() => {
+
+                                props.toggleAddFriendInProgress(true, u.id)
+                                usersAPI.toEnemy(u.id)
                                     .then((response) => {
                                         if (response.data.resultCode === 0) {
                                             props.removeFriend(u.id)
                                         }
+                                        props.toggleAddFriendInProgress(false, u.id)
                                     });
-                                 }}>To enemy</button>
-                            : <button onClick={() => {
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': '3f4f3bf6-035a-4f75-a534-7545a1c1a8c4'
-                                    },
-                                })
-                                //usersAPI.toFriend(u.id)
+                            }}>To enemy</button>
+                            : <button disabled={props.isFollowingInProgress.some(id => id ===u.id)} onClick={() => {
+                                props.toggleAddFriendInProgress(true, u.id)
+                                usersAPI.toFriend(u.id)
                                     .then((response) => {
                                         if (response.data.resultCode === 0) {
                                             props.addFriend(u.id)
                                         }
+                                        props.toggleAddFriendInProgress(false, u.id)
                                     });
                             }}>To friend</button>}
                     </div>
