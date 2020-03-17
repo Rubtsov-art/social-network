@@ -25,26 +25,11 @@ const User = (props) => {
                             <img alt='avatar' className={style.avatar} src={u.photos.small != null ? u.photos.small : defaultAvatar} />
                         </NavLink>
                         {u.friend
-                            ? <button disabled={props.isFollowingInProgress.some(id => id ===u.id)} onClick={() => {
-
-                                props.toggleAddFriendInProgress(true, u.id)
-                                usersAPI.toEnemy(u.id)
-                                    .then((response) => {
-                                        if (response.data.resultCode === 0) {
-                                            props.removeFriend(u.id)
-                                        }
-                                        props.toggleAddFriendInProgress(false, u.id)
-                                    });
+                            ? <button disabled={props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.deleteFriend(u.id)
                             }}>To enemy</button>
-                            : <button disabled={props.isFollowingInProgress.some(id => id ===u.id)} onClick={() => {
-                                props.toggleAddFriendInProgress(true, u.id)
-                                usersAPI.toFriend(u.id)
-                                    .then((response) => {
-                                        if (response.data.resultCode === 0) {
-                                            props.addFriend(u.id)
-                                        }
-                                        props.toggleAddFriendInProgress(false, u.id)
-                                    });
+                            : <button disabled={props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.createFriendship(u.id);
                             }}>To friend</button>}
                     </div>
                     <div>

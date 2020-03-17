@@ -2,32 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import User from './User';
 import Preloader from '../../../reusingComponent/animation/Preloader';
-import { addFriend, removeFriend, setUsers, changeCurrantPage, setTotalItemsCount, toggleIsFetching, toggleAddFriendInProgress } from '../../../redux/usersReducer';
-import { usersAPI } from '../../../api/api';
+import { createFriendship, deleteFriend, changeCurrantPage, toggleAddFriendInProgress, getUsers } from '../../../redux/usersReducer';
 
 
 
 class UsersResponseAPI extends React.Component {
     componentDidMount = (props) => {
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(this.props.currantPage, this.props.pageSize)
-            .then((data) => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalItemsCount(data.totalCount)
-            });
+        this.props.getUsers(this.props.currantPage, this.props.pageSize);
     };
 
     onPageChanged = (pageNumber) => {
+        this.props.getUsers(pageNumber, this.props.pageSize);
         this.props.changeCurrantPage(pageNumber);
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then((data) => {
-                this.props.setUsers(data.items)
-                this.props.toggleIsFetching(false)
-            });
     };
     render = () => {
         return (<>
@@ -37,8 +23,8 @@ class UsersResponseAPI extends React.Component {
                 onPageChanged={this.onPageChanged}
                 currantPage={this.props.currantPage}
                 usersList={this.props.usersList}
-                addFriend={this.props.addFriend}
-                removeFriend={this.props.removeFriend}
+                createFriendship={this.props.createFriendship}
+                deleteFriend={this.props.deleteFriend}
                 isFollowingInProgress={this.props.isFollowingInProgress}
                 toggleAddFriendInProgress={this.props.toggleAddFriendInProgress} />
         </>)
@@ -58,11 +44,9 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,
     {
-        addFriend,
-        removeFriend,
-        setUsers,
+        createFriendship,
+        deleteFriend,
         changeCurrantPage,
-        setTotalItemsCount,
-        toggleIsFetching,
         toggleAddFriendInProgress,
+        getUsers,
     })(UsersResponseAPI)

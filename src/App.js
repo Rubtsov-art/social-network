@@ -10,6 +10,8 @@ import Friends from './components/Friends/Friends';
 import Commercial from './components/Commercial/Commercial';
 import {Route} from 'react-router-dom';
 import Users from './components/Users/Users';
+import Login from './components/Login/Login';
+import MessagesContainer from './components/Messages/MessagesContainer';
 
 
 const App = (props) => {
@@ -21,11 +23,12 @@ const App = (props) => {
       </article>
       <main className='main'>
         <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
-        <Route path='/messages' render={() => <Messages store={props.store} />} />
+        <Route path='/messages' render={() => <MessagesContainer store={props.store} />} />
         <Route path='/settings' component={Settings} />
         <Route path='/music' component={Music} />
         <Route path='/photos' component={Photos} />
         <Route path='/users' render={() => <Users />} />
+        <Route path='/login' render={() => <Login />} />
       </main>
       <article>
         <Commercial />

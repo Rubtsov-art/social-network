@@ -1,6 +1,7 @@
 import React, { createRef } from 'react';
 import style from './DialogsList.module.css'
 import Dialog from './Dialog/Dialog';
+import Login from '../../Login/Login';
 
 
 
@@ -18,7 +19,6 @@ const DialogsList = (props) => {
     let name = newDialog.current.value;
     props.changeInDialogList(name);
   };
-
   
   return (
     <div>

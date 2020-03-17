@@ -1,4 +1,3 @@
-import React, { createRef } from 'react';
 import { actionCreatorAddInterlocutor, actionCreatorChangeInDialogList } from '../../../redux/messagesReducer';
 import DialogsList from './DialogsList';
 import {connect} from 'react-redux';
@@ -6,7 +5,7 @@ import {connect} from 'react-redux';
 let mapStateToProps = (state) => {
     return {
         messagesPage: state.messagesPage,
-        postFieldValue: state.messagesPage.postFieldValue, 
+        postFieldValue: state.messagesPage.postFieldValue,
     }
 };
 

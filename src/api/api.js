@@ -22,7 +22,19 @@ export const usersAPI = {
     },
 
     toFriend (someUser) {
-        return instance.post(`follow/${someUser}`, {})
+        return instance.post(`follow/${someUser}`)
     },
 };
 
+
+export const loginAPI = {
+    setLogin () {
+        return instance.get('auth/me')
+    },
+};
+
+export const profileAPI = {
+    setUserProfile (userId) {
+       return instance.get(`profile/${userId}`)
+    },
+};
