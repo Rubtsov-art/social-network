@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Messages.module.css'
 import DialogsListContainer from './DialogsList/DialogsListContainer';
 import MessageList from './MassageList/MessageList';
-import Login from '../Login/Login';
 
 
 const Messages = (props) => {
@@ -10,7 +9,7 @@ const Messages = (props) => {
   return (
     <section className={style.main_content}>
       <DialogsListContainer store={props.store}/>
-      <MessageList messageData={props.store.getState().messageData}/>
+      <MessageList messageData={props.messageData}/>
     </section>
   )
 };

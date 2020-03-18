@@ -2,6 +2,7 @@ import React from 'react';
 import Messages from './Messages';
 import { connect } from 'react-redux';
 import { withAuthRedirect } from '../hoc/withAuthRedirectComponent';
+import { compose } from 'redux';
 
 const  MessagesContainer = (props) => {
     return (
@@ -11,10 +12,19 @@ const  MessagesContainer = (props) => {
 
 const mapStateToProps = (state) => {
     return ({
-    isAuth: state.auth.isAuth
+        messageData: state.messagesPage.messageData,
     })
 }
 
-let authRedirect = withAuthRedirect (MessagesContainer)
+export default compose (connect(mapStateToProps, {}), withAuthRedirect) (MessagesContainer)
 
-export default connect (mapStateToProps, {}) (authRedirect);
+
+// const mapStateToProps = (state) => {
+//     return ({
+//     isAuth: state.auth.isAuth
+//     })
+// }
+
+// let authRedirect = withAuthRedirect (MessagesContainer)
+
+// export default connect (mapStateToProps, {}) (authRedirect);
