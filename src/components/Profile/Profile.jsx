@@ -10,7 +10,7 @@ const Profile = (props) => {
   return (
     <section className={style.main_content}>
       <Avatar profile={props.profile}/>
-      <ProfileStatus status={'hello'} />
+      <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
       <PostsContainer store={props.store}/>
     </section>
   )
