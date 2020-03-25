@@ -12,8 +12,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return ({
-    addPost: () => {
-      dispatch(actionCreatorAddPost())
+    addPost: (formData) => {
+      dispatch(actionCreatorAddPost(formData))
       dispatch(actionCreatorChangeInTextarea(''))
     },
     changeInTextArea: (text) => {

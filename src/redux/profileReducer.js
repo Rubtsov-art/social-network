@@ -22,7 +22,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             let newPost = {
                 id: '4',
-                message: state.postFieldValue,
+                message: action.formData,
             };
             return ({
                 ...state,
@@ -47,8 +47,8 @@ const profileReducer = (state = initialState, action) => {
     };
 };
 
-export const actionCreatorAddPost = () => {
-    return ({ type: ADD_POST })
+export const actionCreatorAddPost = (formData) => {
+    return ({ type: ADD_POST, formData })
 };
 
 export const actionCreatorChangeInTextarea = (text) => {
