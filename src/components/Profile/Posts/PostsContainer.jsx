@@ -1,4 +1,3 @@
-import React from 'react';
 import { actionCreatorAddPost, actionCreatorChangeInTextarea } from '../../../redux/profileReducer';
 import Posts from './Posts';
 import { connect } from 'react-redux';
@@ -14,10 +13,6 @@ let mapDispatchToProps = (dispatch) => {
   return ({
     addPost: (formData) => {
       dispatch(actionCreatorAddPost(formData))
-      dispatch(actionCreatorChangeInTextarea(''))
-    },
-    changeInTextArea: (text) => {
-      dispatch(actionCreatorChangeInTextarea(text))
     }
   })
 };

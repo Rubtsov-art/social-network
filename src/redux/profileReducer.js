@@ -1,7 +1,6 @@
 import { profileAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const CHANGE_IN_TEXTAREA = 'CHANGE-IN-TEXTAREA';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
 
@@ -29,12 +28,6 @@ const profileReducer = (state = initialState, action) => {
                 postsData: [...state.postsData, newPost],
             })
         }
-        case CHANGE_IN_TEXTAREA: {
-            return ({
-                ...state,
-                postFieldValue: action.newText,
-            })
-        }
         case SET_USER_PROFILE: {
             return ({ ...state, profile: action.profile })
         }
@@ -49,10 +42,6 @@ const profileReducer = (state = initialState, action) => {
 
 export const actionCreatorAddPost = (formData) => {
     return ({ type: ADD_POST, formData })
-};
-
-export const actionCreatorChangeInTextarea = (text) => {
-    return ({ type: CHANGE_IN_TEXTAREA, newText: text })
 };
 
 export const setUserProfile = (profile) => {

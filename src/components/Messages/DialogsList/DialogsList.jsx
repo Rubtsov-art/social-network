@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import style from './DialogsList.module.css'
 import Dialog from './Dialog/Dialog';
-import Login from '../../Login/Login';
+import NewDialogField from './NewDialogField/NewDialogField';
 
 
 
@@ -11,22 +11,16 @@ const DialogsList = (props) => {
 
   let newDialog = React.createRef();
 
-  let addInterlocutor = () => {
-    props.addInterlocutor();
-  };
-
-  let changeDialogField = () => {
-    let name = newDialog.current.value;
-    props.changeInDialogList(name);
-  };
+  const onSubmit = (newDialog) => {
+    props.addInterlocutor(newDialog.newInterlocutorName)
+  }
   
   return (
     <div>
     <ul className={style.dialog_list}>
       {dialogListDataObj}
     </ul>
-    <textarea ref={newDialog} value={props.postFieldValue} onChange={changeDialogField}/>
-    <button onClick={addInterlocutor}>add new dialog</button>
+    <NewDialogField onSubmit={onSubmit}/>
     </div>
   )
 };

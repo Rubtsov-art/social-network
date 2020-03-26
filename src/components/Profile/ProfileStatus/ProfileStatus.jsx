@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './ProfileStatus.module.css';
+import { Field } from 'redux-form';
 
 class ProfileStatus extends React.Component {
     
@@ -24,8 +25,7 @@ class ProfileStatus extends React.Component {
     onStatusChange (e) {
         this.setState({
             status: e.currentTarget.value
-        })
-    }
+        })    }
 
     componentDidUpdate (prevProps, prevState) {
         if (prevProps.status !== this.props.status) {

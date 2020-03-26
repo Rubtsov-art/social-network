@@ -1,4 +1,4 @@
-import { actionCreatorAddInterlocutor, actionCreatorChangeInDialogList } from '../../../redux/messagesReducer';
+import { actionCreatorAddInterlocutor } from '../../../redux/messagesReducer';
 import DialogsList from './DialogsList';
 import {connect} from 'react-redux';
 
@@ -11,13 +11,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return ({
-        changeInDialogList: (name) => {
-            dispatch(actionCreatorChangeInDialogList(name))
-        },
-        
-        addInterlocutor: () => {
-            dispatch(actionCreatorAddInterlocutor());
-            dispatch(actionCreatorChangeInDialogList(''));
+        addInterlocutor: (newDialog) => {
+            dispatch(actionCreatorAddInterlocutor(newDialog));
         }
         
     })

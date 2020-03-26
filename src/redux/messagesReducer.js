@@ -1,5 +1,4 @@
 const ADD_INTERLOCUTOR = 'ADD-INTERLOCUTOR';
-const CHANGE_IN_DIALOG_FIELD = 'CHANGE-IN-DIALOG-FIELD';
 
 let initialState = {
     dialogListData: [
@@ -7,8 +6,6 @@ let initialState = {
         { link: '/messages/irina', user: 'Irina' },
         { link: '/messages/vitia', user: 'Vitia' },
     ],
-
-    postFieldValue: '',
 
     messageData: [
         { id: '1', message: 'Privet', },
@@ -22,29 +19,19 @@ const messagesReducer = (state = initialState, action) => {
         case ADD_INTERLOCUTOR:{
             let newInterlocutor = {
                 link: '/messages/interlocutor',
-                user: state.postFieldValue,
+                user: action.newDialog,
             };
             return ({
                 ...state,
                 dialogListData: [ ...state.dialogListData, newInterlocutor],
             });
         }
-        case CHANGE_IN_DIALOG_FIELD: {
-            return ({
-                ...state,
-                postFieldValue: action.newName
-            })
-        }
         default: return state;
     };
 };
 
-export const actionCreatorAddInterlocutor = () => {
-    return ({type: ADD_INTERLOCUTOR})
-};
-
-export const actionCreatorChangeInDialogList = (name) => {
-    return ({type: CHANGE_IN_DIALOG_FIELD, newName: name})
+export const actionCreatorAddInterlocutor = (newDialog) => {
+    return ({type: ADD_INTERLOCUTOR, newDialog})
 };
 
 export default messagesReducer;
