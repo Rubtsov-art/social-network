@@ -1,8 +1,7 @@
 import React from 'react';
 import Login from './Login';
 import { connect } from 'react-redux';
-import { getLogin } from '../../../redux/authReducer';
-import { compose } from 'redux';
+import { getLogin, logout } from '../../../redux/authReducer';
 
 
 class LoginContainer extends React.Component {
@@ -19,4 +18,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login,
 });
 
-export default connect (mapStateToProps, {getLogin}) (LoginContainer);
+export default connect (mapStateToProps, {getLogin, logout}) (LoginContainer);

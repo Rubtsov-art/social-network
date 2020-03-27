@@ -6,7 +6,7 @@ const Login = (props) => {
     return (
         <div>
             {props.isAuth ? 
-            <div className={style.login}>{props.login}</div>
+            <div className={style.login}>{props.login} - <button onClick={props.logout}>Logout</button></div>
             : <NavLink to={'/login'} className={style.login}>Login</NavLink>}
         </div>
     );
