@@ -1,7 +1,13 @@
 .error {
-    border: solid red 3px
+    border: solid red 3px;
 }
 
 .errorText {
-    color: red
+    color: red;
+}
+
+.invalidFormData {
+    border: solid 2px red;
+    width: 150px;
+    color: red;
 }
