@@ -26,9 +26,8 @@ export const setUsersData = (userId, login, email, isAuth) => {
     return ({type: SET_USERS_DATA, data: {userId, login, email, isAuth}})
 };
 
-export const getLogin = () => {
-    return (dispatch) => {
-        loginAPI.setLogin()
+export const getLogin = () =>  (dispatch) => {
+        return loginAPI.setLogin()
         .then((response) => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data;
@@ -36,10 +35,8 @@ export const getLogin = () => {
             }
         });
     }
-}
 
-export const login = (email, password, rememberMe) => {
-    return (dispatch) => {
+export const login = (email, password, rememberMe) => (dispatch) => {
         loginAPI.login(email, password, rememberMe)
         .then((response) => {
             if (response.data.resultCode === 0) {
@@ -50,7 +47,7 @@ export const login = (email, password, rememberMe) => {
             }
         })
     }
-}
+
 
 export const logout = () => {
     return (dispatch) => {
