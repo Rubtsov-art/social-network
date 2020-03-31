@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import User from './User';
 import Preloader from '../../../reusingComponent/animation/Preloader';
 import { createFriendship, deleteFriend, changeCurrantPage, toggleAddFriendInProgress, getUsers } from '../../../redux/usersReducer';
+import { getUsersData, getCurrantPage, getPageSize, getTotalItemsCount, getIsFetching, getIsFollowingInProgress } from '../../../redux/usersSelectors';
 
 
 
@@ -33,12 +34,12 @@ class UsersResponseAPI extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        usersList: state.usersPage.usersData,
-        currantPage: state.usersPage.currantPage,
-        pageSize: state.usersPage.pageSize,
-        totalItemsCount: state.usersPage.totalItemsCount,
-        isFetching: state.usersPage.isFetching,
-        isFollowingInProgress: state.usersPage.isFollowingInProgress,
+        usersList:  getUsersData(state),
+        currantPage: getCurrantPage(state),
+        pageSize: getPageSize(state),
+        totalItemsCount: getTotalItemsCount(state),
+        isFetching: getIsFetching(state),
+        isFollowingInProgress: getIsFollowingInProgress(state),
     })
 };
 
