@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './ProfileStatus.module.css';
 
 const ProfileStatusWithHooks = (props) => {
 
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
+
+    useEffect ( () => {
+        setStatus(props.status)
+    }, [props.status]);
 
     const editModOn = () => {
         setEditMode(true)
@@ -17,16 +21,8 @@ const ProfileStatusWithHooks = (props) => {
 
     const onStatusChange = (e) => {
         setStatus(e.currentTarget.value)
-    }
-
-    // componentDidUpdate (prevProps, prevState) {
-    //     if (prevProps.status !== this.props.status) {
-    //         this.setState ({
-    //             status: this.props.status
-    //         })
-    //     }
-    // }
-
+    };
+    
     return (
         <div>
             {editMode ?
