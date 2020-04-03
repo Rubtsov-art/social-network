@@ -2,8 +2,7 @@ import React from 'react';
 import style from './Friends.module.css';
 import Friend from './Friend/Friend';
 
-const Friends = (props) => {
-
+const Friends = React.memo((props) => {
    let friendName = props.store.getState().friendsList.friends.map ((el) => <Friend key={el.id} friendName={el.name}/>);
 
     return (
@@ -13,6 +12,6 @@ const Friends = (props) => {
             </ul>
         </section>
     )
-};
+});
 
 export default Friends

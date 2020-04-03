@@ -5,10 +5,8 @@ import PostReduxField from './PostField/PostField';
 
 
 const Posts = (props) => {
+
 let postListItem = props.postsData.map((p) => <Post message={p.message} key={p.id}/>);
-
-let newPost = React.createRef();
-
 
 const addNewPost = (formData) => {
   props.addPost(formData.postField)
