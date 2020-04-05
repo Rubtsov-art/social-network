@@ -6,13 +6,13 @@ import { Redirect } from 'react-router-dom'
 
 
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
 
   const onSubmit = (formData) => {
-    props.login(formData.loginName, formData.loginPassword, formData.rememberMe)
+    login(formData.loginName, formData.loginPassword, formData.rememberMe)
   }
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Redirect to="/profile" />
   }
 

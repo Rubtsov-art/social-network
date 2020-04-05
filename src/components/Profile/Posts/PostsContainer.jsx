@@ -14,7 +14,6 @@ let mapDispatchToProps = (dispatch) => {
     addPost: (formData) => {
       dispatch(actionCreatorAddPost(formData))
     },
-
     deletePost,
   })
 };

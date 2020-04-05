@@ -5,7 +5,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import Music from './components/Music/Music';
 import Photos from './components/Photos/Photos';
-import Friends from './components/Friends/Friends';
+import FriendsContainer from './components/Friends/FriendsContainer';
 import Commercial from './components/Commercial/Commercial';
 import { Route, withRouter } from 'react-router-dom';
 import Login from './components/Login/Login';
@@ -32,7 +32,7 @@ class App extends React.Component {
       <div className='wrapper'>
         <Header />
         <article>
-          <Friends store={this.props.store} />
+          <FriendsContainer />
         </article>
         <main className='main'>
           <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
