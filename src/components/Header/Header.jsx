@@ -4,7 +4,7 @@ import style from './Header.module.css';
 import Logo from './Logo/Logo';
 import LoginContainer from './Login/LoginContainer';
 
-const Header = () => {
+const Header = React.memo((props) => {
   return (
     <header className={style.header}>
       <Logo />
@@ -12,6 +12,6 @@ const Header = () => {
       <NavBar />
     </header>
   )
-};
+});
 
 export default Header;

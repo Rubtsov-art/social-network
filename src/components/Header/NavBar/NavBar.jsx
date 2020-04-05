@@ -2,7 +2,7 @@ import React from 'react';
 import style from './NavBar.module.css';
 import NavItem from './NavItem/NavItem';
 
-const NavBar = () => {
+const NavBar = React.memo((props) => {
   return (
     <nav className={style.global_navigation}>
       <ul className={style.list}>
@@ -15,6 +15,6 @@ const NavBar = () => {
       </ul>
     </nav>
   )
-};
+})
 
 export default NavBar;

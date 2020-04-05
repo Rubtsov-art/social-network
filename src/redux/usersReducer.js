@@ -1,4 +1,5 @@
 import { usersAPI } from "../api/api";
+import { updateObjectInArray } from "../api/utilits/arraysReader";
 
 const FRIEND = 'FRIEND';
 const ENEMY = 'ENEMY';
@@ -22,23 +23,13 @@ const usersReducer = (state = initialState, action) => {
         case FRIEND: {
             return ({
                 ...state,
-                usersData: state.usersData.map((u) => {
-                    if (u.id === action.id) {
-                        return { ...u, friend: true }
-                    }
-                    return u;
-                })
+                usersData: updateObjectInArray (state.usersData, action.id, 'id', {friend:true})
             })
         }
         case ENEMY: {
             return ({
                 ...state,
-                usersData: state.usersData.map((u) => {
-                    if (u.id === action.id) {
-                        return { ...u, friend: false }
-                    }
-                    return u;
-                })
+                usersData: updateObjectInArray (state.usersData, action.id, 'id', {friend:false})
             })
         }
         case SET_USERS: {
@@ -96,38 +87,40 @@ export const toggleAddFriendInProgress = (isInProgress, userId) => {
 
 
 export const getUsers = (currantPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
 
-        usersAPI.getUsers(currantPage, pageSize).then((data) => {
-            dispatch(toggleIsFetching(false))
-            dispatch(setUsers(data.items))
-            dispatch(setTotalItemsCount(data.totalCount))
-        });
+        let data = await usersAPI.getUsers(currantPage, pageSize)
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(data.items))
+        dispatch(setTotalItemsCount(data.totalCount))
+
     }
 }
 
+const addAndDeleteFriendFlow = async (id, dispatch, APIMethod, actionCreator) => {
+    dispatch(toggleAddFriendInProgress(true, id));
+    let response = await APIMethod(id);
+    if (response.data.resultCode === 0) {
+        dispatch(actionCreator(id))
+    }
+    dispatch(toggleAddFriendInProgress(false, id))
+
+} 
+
 export const deleteFriend = (id) => {
-    return (dispatch) => {
-        dispatch(toggleAddFriendInProgress(true, id))
-        usersAPI.toEnemy(id).then((response) => {
-            if (response.data.resultCode === 0) {
-                dispatch(removeFriend(id))
-            }
-            dispatch(toggleAddFriendInProgress(false, id))
-        });
+    return async (dispatch) => {
+        let APIMethod = usersAPI.toEnemy.bind(usersAPI)
+        let actionCreator = removeFriend
+        addAndDeleteFriendFlow (id, dispatch, APIMethod, actionCreator)
     }
 }
 
 export const createFriendship = (id) => {
-    return (dispatch) => {
-        dispatch(toggleAddFriendInProgress(true, id))
-        usersAPI.toFriend(id).then((response) => {
-                if (response.data.resultCode === 0) {
-                    dispatch(addFriend(id))
-                }
-                dispatch(toggleAddFriendInProgress(false, id))
-            });
+    return async (dispatch) => {
+        let APIMethod = usersAPI.toFriend.bind(usersAPI)
+        let actionCreator = addFriend
+        addAndDeleteFriendFlow (id, dispatch, APIMethod, actionCreator)
     }
 }
 
