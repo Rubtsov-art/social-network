@@ -6,7 +6,7 @@ import PostReduxField from './PostField/PostField';
 
 const Posts = (props) => {
 
-let postListItem = [...props.postsData].reverse().map((p) => <Post message={p.message} key={p.id}/>);
+let postListItem = [...props.postsData].reverse().map((p) => <Post postId={p.id} deletePost={props.deletePost} message={p.message} key={p.id}/>);
 
 const addNewPost = (formData) => {
   props.addPost(formData.postField)

@@ -1,4 +1,4 @@
-import { actionCreatorAddPost, actionCreatorChangeInTextarea } from '../../../redux/profileReducer';
+import { actionCreatorAddPost,  deletePost } from '../../../redux/profileReducer';
 import Posts from './Posts';
 import { connect } from 'react-redux';
 
@@ -13,7 +13,9 @@ let mapDispatchToProps = (dispatch) => {
   return ({
     addPost: (formData) => {
       dispatch(actionCreatorAddPost(formData))
-    }
+    },
+
+    deletePost,
   })
 };
 

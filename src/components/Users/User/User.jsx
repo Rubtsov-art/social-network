@@ -2,7 +2,6 @@ import React from 'react';
 import style from './User.module.css'
 import defaultAvatar from '../../../assets/images/default-avatar.jpg'
 import { NavLink } from 'react-router-dom';
-import { usersAPI } from '../../../api/api';
 
 
 const User = (props) => {
