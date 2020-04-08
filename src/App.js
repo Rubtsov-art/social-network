@@ -35,8 +35,8 @@ class App extends React.Component {
           <FriendsContainer />
         </article>
         <main className='main'>
-          <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
-          <Route path='/messages' render={() => <MessagesContainer store={this.props.store} />} />
+          <Route path='/profile/:userId?' render={() => <ProfileContainer/>} />
+          <Route path='/messages' render={() => <MessagesContainer/>} />
           <Route path='/settings' component={Settings} />
           <Route path='/music' component={Music} />
           <Route path='/photos' component={Photos} />
