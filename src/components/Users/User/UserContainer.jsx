@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import User from './User';
 import Preloader from '../../../reusingComponent/animation/Preloader';
 import { createFriendship, deleteFriend, changeCurrantPage, toggleAddFriendInProgress, getUsers } from '../../../redux/usersReducer';
-import { getUsersData, getCurrantPage, getPageSize, getTotalItemsCount, getIsFetching, getIsFollowingInProgress } from '../../../redux/usersSelectors';
+import { getPortionSize, getUsersData, getCurrantPage, getPageSize, getTotalItemsCount, getIsFetching, getIsFollowingInProgress } from '../../../redux/usersSelectors';
 
 
 
@@ -27,19 +27,21 @@ class UsersResponseAPI extends React.Component {
                 createFriendship={this.props.createFriendship}
                 deleteFriend={this.props.deleteFriend}
                 isFollowingInProgress={this.props.isFollowingInProgress}
-                toggleAddFriendInProgress={this.props.toggleAddFriendInProgress} />
+                toggleAddFriendInProgress={this.props.toggleAddFriendInProgress}
+                portionSize={this.props.portionSize} />
         </>)
     }
 }
 
 let mapStateToProps = (state) => {
     return ({
-        usersList:  getUsersData(state),
+        usersList:  getUsersData(state), 
         currantPage: getCurrantPage(state),
         pageSize: getPageSize(state),
         totalItemsCount: getTotalItemsCount(state),
         isFetching: getIsFetching(state),
         isFollowingInProgress: getIsFollowingInProgress(state),
+        portionSize: getPortionSize(state),
     })
 };
 

@@ -21,4 +21,8 @@ export const getCurrantPage = (state) => {
  export const getIsFollowingInProgress = (state) => {
     return state.usersPage.isFollowingInProgress
  }
+
+ export const getPortionSize = (state) => {
+    return state.usersPage.portionSize
+ }
  

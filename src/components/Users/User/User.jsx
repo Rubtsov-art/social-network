@@ -5,7 +5,6 @@ import Pagination from '../../../reusingComponent/Pagination/Pagination';
 
 
 const User = (props) => {
-
     return (
         <>
             <ul>
@@ -13,7 +12,7 @@ const User = (props) => {
                     <Person user={u} isFollowingInProgress={props.isFollowingInProgress} createFriendship={props.createFriendship} deleteFriend={props.deleteFriend}/>
                 </li>)}
             </ul>
-            <Pagination totalItemsCount={props.totalItemsCount} pageSize={props.pageSize} onPageChanged={props.onPageChanged} currantPage={props.currantPage} />
+            <Pagination totalItemsCount={props.totalItemsCount} portionSize={props.portionSize} pageSize={props.pageSize} onPageChanged={props.onPageChanged} currantPage={props.currantPage} />
         </>
     )
 }
