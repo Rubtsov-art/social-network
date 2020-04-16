@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/appReducer';
 import Preloader from './reusingComponent/animation/Preloader';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/redux-store';
 import withReactSuspense from './components/hoc/withReactSuspense';
@@ -66,11 +66,11 @@ const AppContainer = compose(
 
 
 const CompleteApp = (props) => {
-  return (<BrowserRouter>
+  return (<HashRouter basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
       <AppContainer />
     </Provider>
-  </BrowserRouter>)
+  </HashRouter>)
 }
 
 export default CompleteApp
