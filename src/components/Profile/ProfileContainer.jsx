@@ -6,15 +6,25 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../hoc/withAuthRedirectComponent';
 
-
 class ProfileContainer extends React.Component {
-    componentDidMount = (props) => {
+
+    refreshProfile = () => {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.loginUserId
         };
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId);
+    }
+
+    componentDidMount = (props) => {
+        this.refreshProfile()
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (prevProps.match.params.userId != this.props.match.params.userId) {
+            this.refreshProfile()
+        }
     }
     
     render = () => {
