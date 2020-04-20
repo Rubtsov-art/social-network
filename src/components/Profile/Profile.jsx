@@ -12,7 +12,9 @@ const Profile = (props) => {
     <section className={style.main_content}>
       <Avatar savePhoto={props.savePhoto} isOwner={props.isOwner} profile={props.profile}/>
       <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus} />
-      {props.profile ? <ProfileInfo profile={props.profile}/> : <Preloader/>}
+      {props.profile ? 
+        <ProfileInfo isOwner={props.isOwner} profile={props.profile} saveProfileData={props.saveProfileData}/> 
+        : <Preloader/>}
       <PostsContainer/>
     </section>
   )

@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './ProfileInfo.module.css';
-import Contacts from './Contacts/Contacts';
+import ProfileInfoContent from './ProfileInfoContent/ProfileInfoContent'
+import ProfileInfoForms from './ProfileInfoForms/ProfileInfoForms';
 
 const ProfileInfo = (props) => {
-    return (
-        <ul>
-            <li>
-                <p> Full name:<span>{props.profile.fullName}</span></p>
-            </li>
-            <li>
-                <p>Looking for a job: <span>{props.profile.lookingForAJob ? 'yes' : 'no'}</span></p>
-            </li>
-            {props.profile.lookingForAJob && <li><p>My skills:<span>{props.profile.lookingForAJobDescription}</span></p></li>}
-            <li>
-                <p>About me: <span>{props.profile.aboutMe}</span></p>
-            </li>
-            <li>
-                <p>Contacts: <span>{Object.keys(props.profile.contacts).map(c=> {
-                   return <Contacts key={c} contactTitle={c} contactValue={props.profile.contacts[c]}/>
-                })}</span></p>
-                
-            </li>
-        </ul>
-    )
+
+    let [editMode, setEditMode] = useState(false);
+
+    const editModeOn = () => {
+        setEditMode(true)
+    }
+
+    const editModeOff = () => {
+        setEditMode(false)
+    }
+
+    const onSubmit = (formData) => {
+        props.saveProfileData(formData)
+    }
+
+    return (<div>
+             {editMode ? 
+                <ProfileInfoForms profile={props.profile} onSubmit={onSubmit}/> 
+                : <ProfileInfoContent profile={props.profile}/>};
+             {props.isOwner && <div>isOwner</div>}
+                <button onClick={editModeOff}>save</button>
+                <button onClick={editModeOn}>edit</button>
+            </div>)
 }
 
 export default ProfileInfo
