@@ -17,15 +17,15 @@ const ProfileInfo = (props) => {
 
     const onSubmit = (formData) => {
         props.saveProfileData(formData)
+        editModeOff()
     }
 
     return (<div>
              {editMode ? 
-                <ProfileInfoForms profile={props.profile} onSubmit={onSubmit}/> 
-                : <ProfileInfoContent profile={props.profile}/>};
-             {props.isOwner && <div>isOwner</div>}
-                <button onClick={editModeOff}>save</button>
-                <button onClick={editModeOn}>edit</button>
+                <ProfileInfoForms initialValues={props.profile} onSubmit={onSubmit}/> 
+                : <ProfileInfoContent profile={props.profile}/>}
+             {(props.isOwner && !editMode) ? <button onClick={editModeOn}>edit</button> : null}
+                
             </div>)
 }
 

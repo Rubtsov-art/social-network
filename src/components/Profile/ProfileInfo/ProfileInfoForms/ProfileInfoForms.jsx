@@ -30,7 +30,7 @@ const ProfileInfoForms = (props) => {
 }
 
 const ProfileInfoReduxForms = reduxForm ({
-    form: 'profileDate'
+    form: 'profileData'
 }) (ProfileInfoForms)
 
 export default ProfileInfoReduxForms
