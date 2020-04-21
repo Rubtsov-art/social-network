@@ -5,7 +5,6 @@ import { login } from '../../redux/authReducer'
 import { Redirect } from 'react-router-dom'
 
 
-
 const Login = ({login, isAuth}) => {
 
   const onSubmit = (formData) => {

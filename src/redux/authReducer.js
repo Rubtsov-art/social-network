@@ -1,4 +1,4 @@
-import { loginAPI } from "../api/api";
+import { loginAPI, securityAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
 const SET_USERS_DATA = 'SET-USERS-DATA';
@@ -33,7 +33,6 @@ export const getLogin = () => async (dispatch) => {
         let { id, login, email } = response.data.data;
         dispatch(setUsersData(id, login, email, true))
     }
-
 }
 
 export const login = (email, password, rememberMe) => async (dispatch) => {
@@ -45,7 +44,12 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
         const message = response.data.messages.length > 0 ? response.data.messages[0] : 'some error';
         dispatch(stopSubmit('login', { _error: message }))
     }
+}
 
+export const getCaptchaUrl = () => async (dispatch) => {
+    let response = await securityAPI.getCaptchaURL()
+    const captchaUrl = response.data.url
+        dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
 
 

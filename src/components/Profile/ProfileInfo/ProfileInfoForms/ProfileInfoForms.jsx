@@ -21,9 +21,12 @@ const ProfileInfoForms = (props) => {
                 <label> About me:</label>
                     <Field component={Textarea} placeholder={'About me'} name={'aboutMe'}/>
             
-                {/* <p>Contacts: <span>{Object.keys(props.profile.contacts).map(c => {
-                    return <Contacts key={c} contactTitle={c} contactValue={props.profile.contacts[c]} />
-                })}</span></p> */}
+                <p>Contacts: <span>{Object.keys(props.profile.contacts).map(c => {
+                    return <div key={c}> 
+                            <span>{c}:</span> <Field component={Input} placeholder={c} name={'contacts.' + c}/>
+                            </div>
+                })}</span></p>
+                {props.error && <div className={formsStyle.invalidFormData}>{props.error}</div>}
                 <button>Submit</button>
         </form>
     )

@@ -3,7 +3,7 @@ import style from './Friend.module.css';
 
 const Friend = (props) => {
     return (
-        <li>
+        <li> key={props.key}
             {props.friendName}
         </li>
     )
