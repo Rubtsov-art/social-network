@@ -2,10 +2,9 @@ import React from 'react';
 import style from './Friend.module.css';
 
 const Friend = (props) => {
-    return (
-        <li> key={props.key}
+    return (<li>
             {props.friendName}
-        </li>
+            </li>
     )
 };
 

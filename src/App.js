@@ -3,12 +3,12 @@ import './App.css';
 import Header from './components/Header/Header';
 import FriendsContainer from './components/Friends/FriendsContainer';
 import Commercial from './components/Commercial/Commercial';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/appReducer';
 import Preloader from './reusingComponent/animation/Preloader';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/redux-store';
 import withReactSuspense from './components/hoc/withReactSuspense';
@@ -23,8 +23,17 @@ const Photos = React.lazy(() => import('./components/Photos/Photos'));
 
 class App extends React.Component {
 
+  catchAllUnhandedErrors = (reason, promise) =>{
+    alert('some error')
+  }
+
   componentDidMount = () => {
     this.props.initializeApp()
+    window.addEventListener('unhandledrejection', this.catchAllUnhandedErrors)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandedErrors)
   }
 
   render = () => {
@@ -34,22 +43,26 @@ class App extends React.Component {
 
     return (
       <div className='wrapper'>
-        <Header />
-        <article>
-          <FriendsContainer />
-        </article>
-        <main className='main'>
-          <Route path='/profile/:userId?' render= {withReactSuspense(ProfileContainer)} />
-          <Route path='/messages' render={withReactSuspense(MessagesContainer)} />
-          <Route path='/settings' component={withReactSuspense(Settings)} />
-          <Route path='/music' component={withReactSuspense(Music)} />
-          <Route path='/photos' component={withReactSuspense(Photos)} />
-          <Route path='/users' render={withReactSuspense(UsersContainer)} />
-          <Route path='/login' render={withReactSuspense(Login)} />
-        </main>
-        <article>
-          <Commercial />
-        </article>
+          <Header />
+          <article>
+            <FriendsContainer />
+          </article>
+          <main className='main'>
+            <Switch>
+            <Route exact path='/' render={withReactSuspense(Login)} />
+            <Route path='/profile/:userId?' render={withReactSuspense(ProfileContainer)} />
+            <Route path='/messages' render={withReactSuspense(MessagesContainer)} />
+            <Route path='/settings' component={withReactSuspense(Settings)} />
+            <Route path='/music' component={withReactSuspense(Music)} />
+            <Route path='/photos' component={withReactSuspense(Photos)} />
+            <Route path='/users' render={withReactSuspense(UsersContainer)} />
+            <Route path='/login' render={withReactSuspense(Login)} />
+            <Route path='*' render={<div>404 not found</div>} />
+            </Switch>
+          </main>
+          <article>
+            <Commercial />
+          </article>
       </div>
     );
   }
@@ -66,11 +79,11 @@ const AppContainer = compose(
 
 
 const CompleteApp = (props) => {
-  return (<HashRouter basename={process.env.PUBLIC_URL}>
+  return (<BrowserRouter basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
       <AppContainer />
     </Provider>
-  </HashRouter>)
+  </BrowserRouter>)
 }
 
 export default CompleteApp
