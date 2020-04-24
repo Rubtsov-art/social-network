@@ -1,7 +1,16 @@
 .global_navigation {
-    background-color: blue;
+    background: none;
   }
 
 .item {
     color: white;
+}
+
+.list {
+  margin-top: 90px;
+  width: 700px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

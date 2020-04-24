@@ -1,6 +1,10 @@
 .header {
     grid-area: head;
-    background-color: red;
+    background-image: url('../../img/Neon-style-text-effect-back.png');
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
   
  

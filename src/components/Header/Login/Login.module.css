@@ -1,5 +1,8 @@
 .login {
-    padding-left: 550px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 26px;
     text-decoration: none;
     color: white;
 }

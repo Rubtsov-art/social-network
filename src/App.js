@@ -23,7 +23,7 @@ const Photos = React.lazy(() => import('./components/Photos/Photos'));
 
 class App extends React.Component {
 
-  catchAllUnhandedErrors = (reason, promise) =>{
+  catchAllUnhandedErrors = (reason, promise) => {
     alert('some error')
   }
 
@@ -43,12 +43,12 @@ class App extends React.Component {
 
     return (
       <div className='wrapper'>
-          <Header />
-          <article>
-            <FriendsContainer />
-          </article>
-          <main className='main'>
-            <Switch>
+        <Header />
+        <article>
+          <FriendsContainer />
+        </article>
+        <main className='main'>
+          <Switch>
             <Route exact path='/' render={withReactSuspense(Login)} />
             <Route path='/profile/:userId?' render={withReactSuspense(ProfileContainer)} />
             <Route path='/messages' render={withReactSuspense(MessagesContainer)} />
@@ -58,11 +58,11 @@ class App extends React.Component {
             <Route path='/users' render={withReactSuspense(UsersContainer)} />
             <Route path='/login' render={withReactSuspense(Login)} />
             <Route path='*' render={<div>404 not found</div>} />
-            </Switch>
-          </main>
-          <article>
-            <Commercial />
-          </article>
+          </Switch>
+        </main>
+        <article>
+          <Commercial />
+        </article>
       </div>
     );
   }

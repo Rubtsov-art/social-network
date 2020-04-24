@@ -7,9 +7,9 @@ import LoginContainer from './Login/LoginContainer';
 const Header = React.memo((props) => {
   return (
     <header className={style.header}>
-      <Logo />
-      <LoginContainer />
+      <Logo /> 
       <NavBar />
+      <LoginContainer />
     </header>
   )
 });
