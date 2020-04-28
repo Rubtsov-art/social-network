@@ -15,7 +15,7 @@ const ProfileInfoContent = (props) => {
     }
 
     return (
-        <ul>
+        <ul className={style.profileInfo}>
             <li>
                 <p> Full name:<span>{props.profile.fullName}</span></p>
             </li>

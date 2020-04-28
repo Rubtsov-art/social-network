@@ -9,20 +9,20 @@ const ProfileInfoForms = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style.loginFormField}>
                 <label> Full name:</label>
-                    <Field component={Input} validate={[required]} type={'text'} placeholder={'Full name'} name={'fullName'}/>
+                    <Field className={style.formInput} component={Input} validate={[required]} type={'text'} placeholder={'Full name'} name={'fullName'}/>
             
                 <label>Looking for a job:</label>
-                    <Field component={Input} type={'checkbox'} name={'lookingForAJob'}/>
+                    <Field className={style.formInput} component={Input} type={'checkbox'} name={'lookingForAJob'}/>
                 
                 <label> My skills:</label>
-                    <Field component={Textarea} placeholder={'My skills'} name={'lookingForAJobDescription'}/>
+                    <Field className={style.formInput} component={Textarea} placeholder={'My skills'} name={'lookingForAJobDescription'}/>
             
                 <label> About me:</label>
-                    <Field component={Textarea} placeholder={'About me'} name={'aboutMe'}/>
+                    <Field className={style.formInput} component={Textarea} placeholder={'About me'} name={'aboutMe'}/>
             
                 <p>Contacts: <span>{Object.keys(props.profile.contacts).map(c => {
                     return <div key={c}> 
-                            <span>{c}:</span> <Field component={Input} placeholder={c} name={'contacts.' + c}/>
+                            <span>{c}:</span> <Field className={style.formInput} component={Input} placeholder={c} name={'contacts.' + c}/>
                             </div>
                 })}</span></p>
                 {props.error && <div className={formsStyle.invalidFormData}>{props.error}</div>}
