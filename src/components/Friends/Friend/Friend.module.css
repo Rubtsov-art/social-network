@@ -1,9 +1,12 @@
-.friends {
-  grid-area: friends;
-  background-color: blue;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, 1fr);
+.friend {
+  list-style: none;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 30px;
+  align-self: center;
+  color: plum;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #0000ff, 0 0 80px #0000ff, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
 }
 
 

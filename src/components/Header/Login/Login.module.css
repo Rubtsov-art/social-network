@@ -1,8 +1,46 @@
 .login {
+    margin-left: 560px;
+    min-height: 50px;
+    width: 200px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.loginName {
+    margin-top: 42px;
+    margin-left: 5px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(245, 241, 19);
+    line-height: 26px;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ffff00, 0 0 80px #ffff00, 0 0 90px #ffff00, 0 0 100px #ffff00, 0 0 150px #ffff00;
+}
+
+.loginButton {
+    margin-top: 30px;
     font-family: 'Roboto';
     font-weight: 300;
     font-size: 14px;
     line-height: 26px;
-    text-decoration: none;
-    color: white;
+    color: plum;
+    text-shadow: 0 0 5px plum, 0 0 10px plum, 0 0 20px plum, 0 0 40px plum, 0 0 80px plum, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: 45%;
+    width: 90px;
+    min-height: 50px;
+    box-shadow: 0px 0px 18px blueviolet,
+                inset 0px 0px 18px blueviolet;
+}
+
+.loginButton:hover {
+    color: rgb(218, 83, 65);
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #00ff00, 0 0 80px #00ff00, 0 0 90px #00ff00, 0 0 100px #00ff00, 0 0 150px #00ff00;
+    box-shadow: 0px 0px 18px rgb(223, 22, 22),
+                inset 0px 0px 18px rgb(223, 22, 22);
 }

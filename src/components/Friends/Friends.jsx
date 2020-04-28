@@ -7,7 +7,8 @@ const Friends = React.memo(({friends}) => {
 
     return (
         <section className={style.friends}>
-            <ul>
+            <h3 className={style.listName}>FRIENDS LIST</h3>
+            <ul className={style.list}>
                 {friendName}
             </ul>
         </section>

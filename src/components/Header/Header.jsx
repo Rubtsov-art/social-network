@@ -8,8 +8,10 @@ const Header = React.memo((props) => {
   return (
     <header className={style.header}>
       <Logo /> 
-      <NavBar />
-      <LoginContainer />
+      <div className={style.controlPanel}>
+        <LoginContainer />
+        <NavBar />
+      </div>
     </header>
   )
 });

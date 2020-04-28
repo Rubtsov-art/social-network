@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './MessageList.module.css'
 import Message from './Message/Message';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 
 const MessageList = (props) => {

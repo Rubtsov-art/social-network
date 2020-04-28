@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './ProfileInfoForms.module.css';
-import Contacts from '../Contacts/Contacts';
 import { reduxForm, Field } from 'redux-form';
 import { Input, Textarea } from '../../../FormControl/FormControl';
 import { required } from '../../../../validators/validators';
@@ -10,7 +9,7 @@ const ProfileInfoForms = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style.loginFormField}>
                 <label> Full name:</label>
-                    <Field component={Input} type={'text'} placeholder={'Full name'} name={'fullName'}/>
+                    <Field component={Input} validate={[required]} type={'text'} placeholder={'Full name'} name={'fullName'}/>
             
                 <label>Looking for a job:</label>
                     <Field component={Input} type={'checkbox'} name={'lookingForAJob'}/>

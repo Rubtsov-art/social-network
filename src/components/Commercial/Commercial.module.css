@@ -1,6 +1,18 @@
 .commercial {
   grid-area: commercial;
-  background-color: blue;
+  min-height: 550px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 18px blueviolet,
+              inset 0px 0px 18px blueviolet;
+}
+
+.commercialBlock {
+  font-family: 'Roboto';
+  color: plum;
+  font-weight: 400;
+  text-shadow: 0 0 1px #ffffff, 0 0 2px #ffffff, 0 0 5px #ffffff, 0 0 20px #0000ff, 0 0 30px #0000ff, 0 0 10px #0000ff, 0 0 10px #0000ff, 0 0 20px #0000ff;
+  display: inline-block;
+  margin: 20px;
 }
 
 
