@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './ProfileInfoContent.module.css';
 import Contacts from '../Contacts/Contacts';
 
 const ProfileInfoContent = (props) => {
+
+    let [fullInfo, setFullInfo] = useState(false)
+
+    const fullInfoOn = () => {
+        setFullInfo(true)
+    }
+
+    const fullInfoOff = () => {
+        setFullInfo(false)
+    }
+
     return (
         <ul>
             <li>
@@ -16,9 +27,18 @@ const ProfileInfoContent = (props) => {
                 <p>About me: <span>{props.profile.aboutMe}</span></p>
             </li>
             <li>
-                <p>Contacts: <span>{Object.keys(props.profile.contacts).map(c => {
-                    return <Contacts key={c} contactTitle={c} contactValue={props.profile.contacts[c]} />
-                })}</span></p>
+                <p className={style.contacts}>Contacts: 
+                     { fullInfo ?
+                     (<>
+                     <span>
+                         {Object.keys(props.profile.contacts).map(c => {
+                         return <Contacts key={c} contactTitle={c} contactValue={props.profile.contacts[c]} />})}
+                     </span>
+                     <button onClick={fullInfoOff} className={style.buttonClose} aria-label={'close full Information'}>x</button>
+                     </>)
+                     : <button onClick={fullInfoOn} className={style.buttonOpen} aria-label={'open full Information'}>open</button>
+                    }
+                </p>
             </li>
         </ul>
     )

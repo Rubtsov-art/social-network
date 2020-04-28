@@ -1,0 +1,110 @@
+.contacts {
+    position: relative;
+}
+
+.buttonClose {
+    margin:0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    color:plum;
+    font-size:16px;
+    background:transparent;
+    cursor:pointer;
+    border-radius: 50%;
+    box-shadow: 0px 0px 18px blueviolet,
+                inset 0px 0px 18px blueviolet;
+    widows: 30px;
+    height: 30px;
+    width: 30px;
+    text-align:center;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+     -webkit-transition:all .6s ease-in-out;
+    transition:all .6s ease-in-out;
+   overflow:hidden;
+  }
+  
+  .buttonClose::before{
+    content:'';
+    position:absolute;
+    top:-130px;
+    margin:auto;
+    display:block;
+    border-radius:50%;
+    width:300px;
+    height:300px;
+    left:-75px;
+    -webkit-transition:box-shadow .6s ease-in-out;
+    transition:box-shadow .6s ease-in-out;
+    z-index:-1;
+   
+  }
+  .buttonClose:hover {
+    background-color: blueviolet;
+  }
+  
+  .buttonClose:hover{
+    color:#fff;
+    box-shadow: 0px 0px 18px rgb(227, 245, 67),
+                inset 0px 0px 18px rgb(227, 245, 67);
+  }
+  
+  .buttonClose:hover::before{
+    box-shadow:inset 0 0 0 160px rgb(227, 245, 67);
+  }
+
+  .buttonOpen {
+    margin:0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    color:plum;
+    font-size:16px;
+    background:transparent;
+    cursor:pointer;
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px blueviolet,
+                inset 0px 0px 18px blueviolet;
+    widows: 30px;
+    height: 30px;
+    width: 50px;
+    position: absolute;
+    top: 15px;
+    right: 480px;
+    text-align:center;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+     -webkit-transition:all .6s ease-in-out;
+    transition:all .6s ease-in-out;
+   overflow:hidden;
+  }
+  
+  .buttonOpen::before{
+    content:'';
+    position:absolute;
+    top:-130px;
+    margin:auto;
+    display:block;
+    border-radius:50%;
+    width:300px;
+    height:300px;
+    left:-75px;
+    -webkit-transition:box-shadow .6s ease-in-out;
+    transition:box-shadow .6s ease-in-out;
+    z-index:-1;
+   
+  }
+  .buttonOpen:hover {
+    background-color: blueviolet;
+  }
+  
+  .buttonOpen:hover{
+    color:#fff;
+    box-shadow: 0px 0px 18px rgb(227, 245, 67),
+                inset 0px 0px 18px rgb(227, 245, 67);
+  }
+  
+  .buttonOpen:hover::before{
+    box-shadow:inset 0 0 0 160px rgb(227, 245, 67);
+  }
