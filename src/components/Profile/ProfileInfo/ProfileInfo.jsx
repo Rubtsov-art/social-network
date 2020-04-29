@@ -23,11 +23,11 @@ const ProfileInfo = (props) => {
         )
     }
 
-    return (<div>
+    return (<div className={style.info}>
              {editMode ? 
                 <ProfileInfoForms initialValues={props.profile} profile={props.profile} onSubmit={onSubmit}/> 
                 : <ProfileInfoContent profile={props.profile}/>}
-             {(props.isOwner && !editMode) ? <button onClick={editModeOn}>edit</button> : null}
+             {(props.isOwner && !editMode) ? <button className={style.editButton} onClick={editModeOn}>edit information</button> : null}
                 
             </div>)
 }

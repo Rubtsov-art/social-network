@@ -26,7 +26,7 @@ const ProfileInfoForms = (props) => {
                             </div>
                 })}</span></p>
                 {props.error && <div className={formsStyle.invalidFormData}>{props.error}</div>}
-                <button>Submit</button>
+                <button className={style.submit}>Submit</button>
         </form>
     )
 }

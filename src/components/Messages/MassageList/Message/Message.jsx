@@ -6,7 +6,7 @@ const Message = (props) => {
 
   return (
     <div>
-      <p>{props.text}</p>
+      <p className={style.text}>{props.text}</p>
     </div>
   )
 };

@@ -6,7 +6,7 @@ import style from './Post.module.css'
 const Post = (props) => {
   return (
       <li className={style.post}>
-          {props.message} <button onClick={() =>{props.deletePost(props.postId)}} aria-label='delete'>delete</button>
+          {props.message} <button className={style.deletePost} onClick={() =>{props.deletePost(props.postId)}} aria-label='delete'>x</button>
       </li>
   )
 };

@@ -9,8 +9,8 @@ const maxLength300 = maxLengthCreator(300)
 const PostField = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field className={style.postField} component={Textarea} type={'text'} placeholder={'Write post'} name={'postField'} validate={[required, maxLength300]}/>
-            <button>add post</button>
+            <Field className={style.formInput} component={Textarea} type={'text'} placeholder={'Write post'} name={'postField'} validate={[required, maxLength300]}/>
+            <button className={style.submit}>add post</button>
         </form>
     )
 };

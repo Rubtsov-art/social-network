@@ -1,4 +1,7 @@
 .main_content {
-    display: grid;
-    grid-template-columns: 2fr 5fr;
+    margin: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
 }

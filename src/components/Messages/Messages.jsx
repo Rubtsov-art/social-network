@@ -8,7 +8,7 @@ const Messages = (props) => {
 
   return (
     <section className={style.main_content}>
-      <DialogsListContainer store={props.store}/>
+      <DialogsListContainer />
       <MessageList messageData={props.messageData}/>
     </section>
   )
