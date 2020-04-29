@@ -17,14 +17,14 @@ const Pagination = (props) => {
     let rightPortionPageNumber = portionNumber * props.portionSize;
 
     let pagesNumberItem = pagesNumber   .filter((p)=> p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                                        .map((p) => <li><button onClick={() => { return (props.onPageChanged(p)) }} className={props.currantPage === p && style.currantPage}>{p}</button></li>);
+                                        .map((p) => <li><button onClick={() => { return (props.onPageChanged(p)) }} className={props.currantPage === p ? style.currantPage: style.page }>{p}</button></li>);
 
 
     return (
         <ul className={style.breadCramps}>
-            {portionNumber > 1 && <button onClick={()=>{setPortionNumber(portionNumber-1)}}>prev</button>}
-            {pagesNumberItem}
-            {portionCount > props.portionSize && <button onClick={()=>{setPortionNumber(portionNumber+1)}}>next</button>}
+            {portionNumber > 1 && <button className={style.prev} onClick={()=>{setPortionNumber(portionNumber-1)}}>prev</button>}
+            <ul className={style.pages}>{pagesNumberItem}</ul>
+            {portionCount > props.portionSize && <button className={style.next} onClick={()=>{setPortionNumber(portionNumber+1)}}>next</button>}
         </ul>
     )
 }

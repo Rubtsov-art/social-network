@@ -1,32 +1,26 @@
 import React from 'react'
 import style from './Person.module.css'
 import { NavLink } from 'react-router-dom';
-import defaultAvatar from '../../../../assets/images/default-avatar.jpg'
+import defaultAvatar from '../../../../assets/images/default-avatar.png'
 
 const Person = ({user, isFollowingInProgress, createFriendship, deleteFriend, ...props}) => {
     return (
         <>
-            <div>
+            <div className={style.user}>
                         <NavLink to={'/profile/' + user.id}>
                             <img alt='avatar' className={style.avatar} src={user.photos.small != null ? user.photos.small : defaultAvatar} />
                         </NavLink>
                         {user.friend
-                            ? <button disabled={isFollowingInProgress.some(id => id === user.id)} onClick={() => {
+                            ? <button className={style.friendButton} disabled={isFollowingInProgress.some(id => id === user.id)} onClick={() => {
                                 deleteFriend(user.id)
                             }}>To enemy</button>
-                            : <button disabled={isFollowingInProgress.some(id => id === user.id)} onClick={() => {
+                            : <button className={style.friendButton} disabled={isFollowingInProgress.some(id => id === user.id)} onClick={() => {
                                 createFriendship(user.id);
                             }}>To friend</button>}
-                    </div>
-                    <div>
-                        <span>
-                            <p>{user.name}</p>
-                            <p>{user.status}</p>
-                        </span>
-                        <span>
-                            <p>{'user.location.city'}</p>
-                            <p>{'user.location.country'}</p>
-                        </span>
+                        <p className={style.info}>
+                            <span>{user.name}</span>
+                            <span>{user.status}</span>
+                        </p>
                     </div>
         </>
     )

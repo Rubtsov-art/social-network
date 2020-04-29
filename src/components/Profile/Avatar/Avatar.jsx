@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Avatar.module.css'
 import Preloader from '../../../reusingComponent/animation/Preloader';
 import { useState } from 'react';
+import defaultAvatar from '../../../assets/images/default-avatar.png';
 
 const Avatar = (props) => {
 
@@ -27,7 +28,10 @@ const Avatar = (props) => {
 
   return (
     <>
-      <img className={style.avatar} onClick={editModeOn} src={props.profile.photos.large} alt="it's you"/>
+      {props.profile.photos.large ? <img className={style.avatar} onClick={editModeOn} src={props.profile.photos.large} alt="it's you"/> 
+                                  : <img className={style.avatar} src={defaultAvatar} alt="it's you"/>
+            }
+      
       {props.isOwner && editMode && <div className={style.controlButtons}>
                                       <input type={"file"} id={"avatarFile"} onChange={onMainPhotoChange} className={style.inputFile}/>
                                       <label for={"avatarFile"}>choose a file</label>

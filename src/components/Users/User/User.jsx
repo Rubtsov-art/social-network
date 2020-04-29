@@ -7,7 +7,7 @@ import Pagination from '../../../reusingComponent/Pagination/Pagination';
 const User = (props) => {
     return (
         <>
-            <ul>
+            <ul className={style.list}>
                 {props.usersList.map((u) => <li key={u.id}>
                     <Person user={u} isFollowingInProgress={props.isFollowingInProgress} createFriendship={props.createFriendship} deleteFriend={props.deleteFriend}/>
                 </li>)}
