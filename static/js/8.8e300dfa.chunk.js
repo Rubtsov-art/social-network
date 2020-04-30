@@ -1,0 +1,2 @@
+(this["webpackJsonpfirst-react"]=this["webpackJsonpfirst-react"]||[]).push([[8],{315:function(t,n,e){},318:function(t,n,e){"use strict";e.r(n);var c=e(0),s=e.n(c),a=e(315),i=e.n(a);n.default=function(){return s.a.createElement("section",{className:i.a.main_content},"Music")}}}]);
+//# sourceMappingURL=8.8e300dfa.chunk.js.map
