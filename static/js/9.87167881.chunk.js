@@ -1,0 +1,2 @@
+(this["webpackJsonpfirst-react"]=this["webpackJsonpfirst-react"]||[]).push([[9],{317:function(t,n,e){},320:function(t,n,e){"use strict";e.r(n);var s=e(0),a=e.n(s),c=e(317),i=e.n(c);n.default=function(){return a.a.createElement("section",{className:i.a.main_content},"Photos")}}}]);
+//# sourceMappingURL=9.87167881.chunk.js.map
