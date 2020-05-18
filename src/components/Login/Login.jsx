@@ -3,6 +3,7 @@ import LoginReduxForm from './LoginForm/LoginForm'
 import { connect } from 'react-redux'
 import { login } from '../../redux/authReducer'
 import { Redirect } from 'react-router-dom'
+import style from './Login.module.css'
 
 
 const Login = ({login, isAuth, captchaUrl}) => {
@@ -16,7 +17,7 @@ const Login = ({login, isAuth, captchaUrl}) => {
   }
 
   return  (
-    <section>
+    <section className={style.loginContainer}>
         <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl} />
     </section>
   )

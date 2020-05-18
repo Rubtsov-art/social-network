@@ -1,5 +1,3 @@
-.loginFormField {
-    display: grid;
-    grid-template-columns: 1;
-    grid-template-rows: 5;
+.loginContainer {
+    margin: 20px;
 }
