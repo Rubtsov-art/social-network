@@ -1,8 +1,21 @@
 const ADD_INTERLOCUTOR = 'ADD-INTERLOCUTOR';
 
-export type initialStateType
+type dialogListDataType = {
+    link: string,
+    user: string
+}
 
-let initialState = {
+type messageDataType = {
+    id: string,
+    message: string
+}
+
+export type initialStateType = {
+    dialogListData: Array<dialogListDataType>,
+    messageData: Array<messageDataType>
+}
+
+let initialState: initialStateType = {
     dialogListData: [
         { link: '/messages/pasha', user: 'Pasha' },
         { link: '/messages/irina', user: 'Irina' },

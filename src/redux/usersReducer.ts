@@ -1,3 +1,4 @@
+//import { toggleAddFriendInProgress } from './usersReducer';
 import { usersAPI } from "../api/api";
 import { updateObjectInArray } from "../api/utilits/arraysReader";
 
@@ -9,17 +10,32 @@ const SET_TOTAL_ITEMS_COUNT = 'SET-TOTAL-ITEMS-COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const TOGGLE_ADD_FRIEND_IN_PROGRESS = 'TOGGLE_ADD_FRIEND_IN_PROGRESS';
 
-let initialState = {
-    usersData: [],
-    currantPage: 1,
-    pageSize: 5,
-    totalItemsCount: 0,
-    isFetching: false,
-    isFollowingInProgress: [],
-    portionSize: 5,
+type photosType = {
+    small: null | string,
+    large: null | string
 }
 
-const usersReducer = (state = initialState, action) => {
+type user = {
+    name: string,
+    id: number,
+    photos: photosType,
+    status: null | string,
+    followed: boolean
+}
+
+let initialState = {
+    usersData: [] as Array<user> | null,
+    currantPage: 1 as number,
+    pageSize: 5 as number,
+    totalItemsCount: 0 as number,
+    isFetching: false as boolean,
+    isFollowingInProgress: [] as Array<number>,
+    portionSize: 5 as number,
+}
+
+export type initialStateType = typeof initialState
+
+const usersReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case FRIEND: {
             return ({
@@ -58,37 +74,73 @@ const usersReducer = (state = initialState, action) => {
     };
 };
 
-export const addFriend = (userId) => {
+type addFriendType = {
+    type: typeof FRIEND,
+    id: number
+}
+
+export const addFriend = (userId: number) :addFriendType => {
     return ({ type: FRIEND, id: userId })
 };
 
-export const removeFriend = (userId) => {
+type removeFriendType = {
+    type: typeof ENEMY,
+    id: number
+}
+
+export const removeFriend = (userId: number): removeFriendType => {
     return ({ type: ENEMY, id: userId })
 };
 
-export const setUsers = (usersData) => {
+type setUsersType = {
+    type: typeof SET_USERS,
+    usersData: Array<user>
+}
+
+export const setUsers = (usersData: Array<user>): setUsersType => {
     return ({ type: SET_USERS, usersData })
 }
 
-export const changeCurrantPage = (number) => {
+type changeCurrantPageType = {
+    type: typeof CHANGE_CURRANT_PAGE,
+    number: number
+}
+
+export const changeCurrantPage = (number: number): changeCurrantPageType => {
     return ({ type: CHANGE_CURRANT_PAGE, number })
 }
 
-export const setTotalItemsCount = (totalCount) => {
+type setTotalItemsCountType = {
+    type: typeof SET_TOTAL_ITEMS_COUNT,
+    totalCount: number
+}
+
+export const setTotalItemsCount = (totalCount: number): setTotalItemsCountType => {
     return ({ type: SET_TOTAL_ITEMS_COUNT, totalCount })
 }
 
-export const toggleIsFetching = (isFetching) => {
+type toggleIsFetchingType = {
+    type: typeof TOGGLE_IS_FETCHING,
+    isFetching: boolean
+}
+
+export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => {
     return ({ type: TOGGLE_IS_FETCHING, isFetching })
 }
 
-export const toggleAddFriendInProgress = (isInProgress, userId) => {
+type toggleAddFriendInProgressType = {
+    type: typeof TOGGLE_ADD_FRIEND_IN_PROGRESS,
+    isInProgress: boolean,
+    userId: number
+}
+
+export const toggleAddFriendInProgress = (isInProgress: boolean, userId: number): toggleAddFriendInProgressType => {
     return ({ type: TOGGLE_ADD_FRIEND_IN_PROGRESS, isInProgress, userId })
 }
 
 
-export const getUsers = (currantPage, pageSize) => {
-    return async (dispatch) => {
+export const getUsers = (currantPage: number, pageSize: number) => {
+    return async (dispatch: any) => {
         dispatch(toggleIsFetching(true));
 
         let data = await usersAPI.getUsers(currantPage, pageSize)
@@ -99,7 +151,7 @@ export const getUsers = (currantPage, pageSize) => {
     }
 }
 
-const addAndDeleteFriendFlow = async (id, dispatch, APIMethod, actionCreator) => {
+const addAndDeleteFriendFlow = async (id: number, dispatch: any, APIMethod: any, actionCreator: any) => {
     dispatch(toggleAddFriendInProgress(true, id));
     let response = await APIMethod(id);
     if (response.data.resultCode === 0) {
@@ -109,16 +161,16 @@ const addAndDeleteFriendFlow = async (id, dispatch, APIMethod, actionCreator) =>
 
 } 
 
-export const deleteFriend = (id) => {
-    return async (dispatch) => {
+export const deleteFriend = (id: number) => {
+    return async (dispatch: any) => {
         let APIMethod = usersAPI.toEnemy.bind(usersAPI)
         let actionCreator = removeFriend
         addAndDeleteFriendFlow (id, dispatch, APIMethod, actionCreator)
     }
 }
 
-export const createFriendship = (id) => {
-    return async (dispatch) => {
+export const createFriendship = (id: number) => {
+    return async (dispatch: any) => {
         let APIMethod = usersAPI.toFriend.bind(usersAPI)
         let actionCreator = addFriend
         addAndDeleteFriendFlow (id, dispatch, APIMethod, actionCreator)
