@@ -1,5 +1,7 @@
 const ADD_INTERLOCUTOR = 'ADD-INTERLOCUTOR';
 
+export type initialStateType
+
 let initialState = {
     dialogListData: [
         { link: '/messages/pasha', user: 'Pasha' },
@@ -14,7 +16,7 @@ let initialState = {
     ],
 }
 
-const messagesReducer = (state = initialState, action) => {
+const messagesReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_INTERLOCUTOR:{
             let newInterlocutor = {
@@ -30,7 +32,12 @@ const messagesReducer = (state = initialState, action) => {
     };
 };
 
-export const actionCreatorAddInterlocutor = (newDialog) => {
+type actionCreatorAddInterlocutorType = {
+    type: typeof ADD_INTERLOCUTOR,
+    newDialog: string
+}
+
+export const actionCreatorAddInterlocutor = (newDialog: string): actionCreatorAddInterlocutorType => {
     return ({type: ADD_INTERLOCUTOR, newDialog})
 };
 

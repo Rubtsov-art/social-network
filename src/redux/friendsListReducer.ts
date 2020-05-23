@@ -1,4 +1,12 @@
-let initialState = {
+type friend = {
+    name: string
+}
+
+export type initialType = {
+    friends: Array<friend>
+}
+
+let initialState: initialType = {
     friends: [
         { name: 'Pasha' },
         { name: 'Irina' },
@@ -6,7 +14,7 @@ let initialState = {
     ],
 };
 
-const friendsListReducer = (state = initialState, action) => {
+const friendsListReducer = (state = initialState, action: any): initialType => {
         switch (action.type) {
             case 1:
                 let stateCopy = {...state};
