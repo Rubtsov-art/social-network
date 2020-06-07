@@ -1,3 +1,10 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 200px;
+}
+
 .formInput {
     font-family: 'Roboto';
     font-size: 16px;
@@ -22,8 +29,8 @@
     margin:0;
     padding:0;
     position: absolute;
-    top: 310px;
-    left: 95px;
+    top: 130px;
+    left: 62px;
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
     color:plum;

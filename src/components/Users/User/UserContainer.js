@@ -32,7 +32,6 @@ class UsersResponseAPI extends React.Component {
         </>)
     }
 }
-
 let mapStateToProps = (state) => {
     return ({
         usersList:  getUsersData(state), 
@@ -44,7 +43,6 @@ let mapStateToProps = (state) => {
         portionSize: getPortionSize(state),
     })
 };
-
 export default connect(mapStateToProps,
     {
         createFriendship,

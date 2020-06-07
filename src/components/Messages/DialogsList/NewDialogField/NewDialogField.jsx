@@ -8,7 +8,7 @@ const maxLength30 = maxLengthCreator(30)
 
 const NewDialogField = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form className={style.form} onSubmit={props.handleSubmit}>
             <Field className={style.formInput} component={Textarea} validate={[required, maxLength30]} name={'newInterlocutorName'}/>
             <button className={style.submit}>add new dialog</button>
         </form>

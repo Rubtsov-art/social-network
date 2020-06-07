@@ -1,6 +1,7 @@
 //import { toggleAddFriendInProgress } from './usersReducer';
 import { usersAPI } from "../api/api";
 import { updateObjectInArray } from "../api/utilits/arraysReader";
+import { userType } from "../types/types";
 
 const FRIEND = 'FRIEND';
 const ENEMY = 'ENEMY';
@@ -10,21 +11,8 @@ const SET_TOTAL_ITEMS_COUNT = 'SET-TOTAL-ITEMS-COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const TOGGLE_ADD_FRIEND_IN_PROGRESS = 'TOGGLE_ADD_FRIEND_IN_PROGRESS';
 
-type photosType = {
-    small: null | string,
-    large: null | string
-}
-
-type user = {
-    name: string,
-    id: number,
-    photos: photosType,
-    status: null | string,
-    followed: boolean
-}
-
 let initialState = {
-    usersData: [] as Array<user> | null,
+    usersData: [] as Array<userType> | null,
     currantPage: 1 as number,
     pageSize: 5 as number,
     totalItemsCount: 0 as number,
@@ -94,10 +82,10 @@ export const removeFriend = (userId: number): removeFriendType => {
 
 type setUsersType = {
     type: typeof SET_USERS,
-    usersData: Array<user>
+    usersData: Array<userType>
 }
 
-export const setUsers = (usersData: Array<user>): setUsersType => {
+export const setUsers = (usersData: Array<userType>): setUsersType => {
     return ({ type: SET_USERS, usersData })
 }
 
