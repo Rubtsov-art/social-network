@@ -8,7 +8,7 @@ type propsType = {
     usersList: Array<userType>
     isFollowingInProgress: Array<number>
     createFriendship: (id: number) => void
-    deleteFriend: () => void
+    deleteFriend: (id: number) => void
     totalItemsCount: number
     portionSize?: number
     pageSize: number
