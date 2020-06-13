@@ -7,7 +7,7 @@ import { getPortionSize, getUsersData, getCurrantPage, getPageSize, getTotalItem
 import { userType } from '../../../types/types';
 import { appStateType } from '../../../redux/redux-store';
 
-type PropsType = {
+type mapStatePropsType = {
     currantPage: number
     pageSize: number
     isFetching: boolean
@@ -15,13 +15,16 @@ type PropsType = {
     usersList: Array<userType>
     isFollowingInProgress: Array<number>
     portionSize: number
+}
 
+type mapDispatchPropsType = {
     getUsers: (currantPage: number, pageSize: number) => void
     changeCurrantPage:(pageNumber: number) => void
     createFriendship: (id: number) => void
     deleteFriend: (id: number) => void
-
 }
+
+type PropsType = mapStatePropsType & mapDispatchPropsType
 
 class UsersResponseAPI extends React.Component<PropsType> {
     componentDidMount = () => {
@@ -43,13 +46,12 @@ class UsersResponseAPI extends React.Component<PropsType> {
                 createFriendship={this.props.createFriendship}
                 deleteFriend={this.props.deleteFriend}
                 isFollowingInProgress={this.props.isFollowingInProgress}
-                //toggleAddFriendInProgress={this.props.toggleAddFriendInProgress}
                 portionSize={this.props.portionSize} />
         </>)
     }
 }
-let mapStateToProps = (state: appStateType) => {
-    return ({
+let mapStateToProps = (state: appStateType): mapStatePropsType => {
+    return {
         usersList:  getUsersData(state), 
         currantPage: getCurrantPage(state),
         pageSize: getPageSize(state),
@@ -57,13 +59,12 @@ let mapStateToProps = (state: appStateType) => {
         isFetching: getIsFetching(state),
         isFollowingInProgress: getIsFollowingInProgress(state),
         portionSize: getPortionSize(state),
-    })
+    }
 };
 export default connect(mapStateToProps,
     {
         createFriendship,
         deleteFriend,
         changeCurrantPage,
-        toggleAddFriendInProgress,
         getUsers,
     })(UsersResponseAPI)
