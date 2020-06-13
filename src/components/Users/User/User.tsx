@@ -29,10 +29,17 @@ const User: React.FC<propsType> = ({usersList,
         <>
             <ul className={style.list}>
                 {usersList.map((u) => <li key={u.id}>
-                    <Person user={u} isFollowingInProgress={isFollowingInProgress} createFriendship={createFriendship} deleteFriend={deleteFriend}/>
+                    <Person user={u} 
+                            isFollowingInProgress={isFollowingInProgress} 
+                            createFriendship={createFriendship} 
+                            deleteFriend={deleteFriend}/>
                 </li>)}
             </ul>
-            <Pagination totalItemsCount={totalItemsCount} portionSize={portionSize} pageSize={pageSize} onPageChanged={onPageChanged} currantPage={currantPage} />
+            <Pagination totalItemsCount={totalItemsCount} 
+                        portionSize={portionSize} 
+                        pageSize={pageSize} 
+                        onPageChanged={onPageChanged} 
+                        currantPage={currantPage} />
         </>
     )
 }

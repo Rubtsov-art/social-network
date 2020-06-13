@@ -2,8 +2,16 @@ import React from 'react'
 import style from './Person.module.css'
 import { NavLink } from 'react-router-dom';
 import defaultAvatar from '../../../../assets/images/default-avatar.png'
+import { userType } from '../../../../types/types';
 
-const Person = ({user, isFollowingInProgress, createFriendship, deleteFriend, ...props}) => {
+type propsType = {
+    user: userType,
+    isFollowingInProgress: Array<number>,
+    createFriendship: (id: number) => void,
+    deleteFriend: (id: number) => void
+}
+
+const Person = ({user, isFollowingInProgress, createFriendship, deleteFriend, ...props}: propsType) => {
     return (
         <>
             <div className={style.user}>

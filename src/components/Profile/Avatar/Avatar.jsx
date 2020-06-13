@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import style from './Avatar.module.css'
 import Preloader from '../../../reusingComponent/animation/Preloader';
 import { useState } from 'react';
 import defaultAvatar from '../../../assets/images/default-avatar.png';
+import { userType } from '../../../types/types';
 
-const Avatar = (props) => {
+type propsType = {
+  isOwner: boolean
+  profile: userType
+  savePhoto: (photo: any) => void
+}
+
+const Avatar = (props: propsType) => {
 
   let [editMode, setEditMode] = useState(false);
 

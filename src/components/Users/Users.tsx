@@ -2,7 +2,9 @@ import React from 'react';
 import style from './Users.module.css'
 import UserContainer from './User/UserContainer';
 
-const Users = (props) => {
+type propsType = {}
+
+const Users = (props: propsType) => {
     return (
         <section className={style.usersPage}>
                 <UserContainer />

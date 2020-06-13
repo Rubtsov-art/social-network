@@ -33,5 +33,6 @@ export type userType = {
     id: number,
     photos: photosType,
     status: null | string,
-    followed: boolean
+    followed: boolean,
+    friend: boolean
 }

@@ -3,7 +3,9 @@ import Users from './Users';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../hoc/withAuthRedirectComponent';
 
-const UsersContainer = (props) => {
+type propsType = {}
+
+const UsersContainer = (props: propsType) => {
     return (
         <Users />
     )
