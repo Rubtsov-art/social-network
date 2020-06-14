@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import User from './User';
 import Preloader from '../../../reusingComponent/animation/Preloader';
-import { createFriendship, deleteFriend, changeCurrantPage, toggleAddFriendInProgress, getUsers } from '../../../redux/usersReducer';
+import { createFriendship, deleteFriend, changeCurrantPage, getUsers } from '../../../redux/usersReducer';
 import { getPortionSize, getUsersData, getCurrantPage, getPageSize, getTotalItemsCount, getIsFetching, getIsFollowingInProgress } from '../../../redux/usersSelectors';
 import { userType } from '../../../types/types';
 import { appStateType } from '../../../redux/redux-store';

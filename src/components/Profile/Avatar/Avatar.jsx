@@ -5,13 +5,7 @@ import { useState } from 'react';
 import defaultAvatar from '../../../assets/images/default-avatar.png';
 import { userType } from '../../../types/types';
 
-type propsType = {
-  isOwner: boolean
-  profile: userType
-  savePhoto: (photo: any) => void
-}
-
-const Avatar = (props: propsType) => {
+const Avatar = (props) => {
 
   let [editMode, setEditMode] = useState(false);
 

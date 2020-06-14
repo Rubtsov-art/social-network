@@ -1,9 +1,14 @@
 import React from 'react';
 import style from './Post.module.css'
 
-//{props.deletePost(props.postId)}
+type propsType = {
+  message: string
+  postId: string
 
-const Post = (props) => {
+  deletePost: (id: string) => void
+}
+
+const Post = (props: propsType) => {
   return (
       <li className={style.post}>
           {props.message} <button className={style.deletePost} onClick={() =>{props.deletePost(props.postId)}} aria-label='delete'>x</button>

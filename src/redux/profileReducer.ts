@@ -82,10 +82,10 @@ export const actionCreatorAddPost = (formData: string): actionCreatorAddPostType
 
 type deletePostType = {
     type: typeof DELETE_POST,
-    postId: number
+    postId: string
 }
 
-export const deletePost = (postId: number) :deletePostType => {
+export const deletePost = (postId: string) :deletePostType => {
     return ({ type: DELETE_POST, postId })
 }
 
