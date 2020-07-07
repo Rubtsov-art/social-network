@@ -1,3 +1,4 @@
+import { appStateType } from "../redux/redux-store"
 
 export type postDataType = {
     id: string,

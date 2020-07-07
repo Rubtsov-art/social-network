@@ -2,6 +2,9 @@
 import { usersAPI } from "../api/api";
 import { updateObjectInArray } from "../api/utilits/arraysReader";
 import { userType } from "../types/types";
+import { appStateType } from "./redux-store";
+import { ThunkAction } from "redux-thunk";
+import { Dispatch } from "react";
 
 const FRIEND = 'FRIEND';
 const ENEMY = 'ENEMY';
@@ -61,6 +64,11 @@ const usersReducer = (state = initialState, action: any) => {
 
     };
 };
+
+type actionsType = addFriendType | removeFriendType | setUsersType | changeCurrantPageType | 
+setTotalItemsCountType | toggleIsFetchingType | toggleAddFriendInProgressType
+
+type ThunkType = ThunkAction<Promise<void>, appStateType, unknown, actionsType>
 
 type addFriendType = {
     type: typeof FRIEND,
@@ -127,8 +135,9 @@ export const toggleAddFriendInProgress = (isInProgress: boolean, userId: number)
 }
 
 
-export const getUsers = (currantPage: number, pageSize: number) => {
-    return async (dispatch: any) => {
+export const getUsers = (currantPage: number, 
+                         pageSize: number): ThunkType => {
+    return async (dispatch, state) => {
         dispatch(toggleIsFetching(true));
 
         let data = await usersAPI.getUsers(currantPage, pageSize)
@@ -139,7 +148,7 @@ export const getUsers = (currantPage: number, pageSize: number) => {
     }
 }
 
-const addAndDeleteFriendFlow = async (id: number, dispatch: any, APIMethod: any, actionCreator: any) => {
+const addAndDeleteFriendFlow = async (id: number, dispatch: Dispatch<actionsType>, APIMethod: any, actionCreator: (userId:number) => addFriendType | removeFriendType) => {
     dispatch(toggleAddFriendInProgress(true, id));
     let response = await APIMethod(id);
     if (response.data.resultCode === 0) {
@@ -149,16 +158,16 @@ const addAndDeleteFriendFlow = async (id: number, dispatch: any, APIMethod: any,
 
 } 
 
-export const deleteFriend = (id: number) => {
-    return async (dispatch: any) => {
+export const deleteFriend = (id: number) :ThunkType => {
+    return async (dispatch) => {
         let APIMethod = usersAPI.toEnemy.bind(usersAPI)
         let actionCreator = removeFriend
         addAndDeleteFriendFlow (id, dispatch, APIMethod, actionCreator)
     }
 }
 
-export const createFriendship = (id: number) => {
-    return async (dispatch: any) => {
+export const createFriendship = (id: number) :ThunkType => {
+    return async (dispatch) => {
         let APIMethod = usersAPI.toFriend.bind(usersAPI)
         let actionCreator = addFriend
         addAndDeleteFriendFlow (id, dispatch, APIMethod, actionCreator)
