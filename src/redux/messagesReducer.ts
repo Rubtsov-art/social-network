@@ -29,7 +29,9 @@ let initialState: initialStateType = {
     ],
 }
 
-const messagesReducer = (state = initialState, action: any) => {
+type actionsType = actionCreatorAddInterlocutorType
+
+const messagesReducer = (state = initialState, action: actionsType) => {
     switch (action.type) {
         case ADD_INTERLOCUTOR:{
             let newInterlocutor = {

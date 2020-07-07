@@ -26,7 +26,7 @@ let initialState = {
 
 export type initialStateType = typeof initialState
 
-const usersReducer = (state = initialState, action: any) => {
+const usersReducer = (state = initialState, action: actionsType) => {
     switch (action.type) {
         case FRIEND: {
             return ({
