@@ -1,11 +1,16 @@
 import React from 'react'
 import style from './LoginForm.module.css';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, InjectedFormProps } from 'redux-form';
 import { Input } from '../../FormControl/FormControl';
 import { required } from '../../../validators/validators';
 import formsStyle from '../../FormControl/FormControl.module.css';
+import { loginFormValuesType } from '../Login';
 
-const LoginForm = (props) => {
+type loginFormOwnProps = {
+    captchaUrl: string | null
+}
+
+const LoginForm: React.FC<InjectedFormProps<loginFormValuesType, loginFormOwnProps> & loginFormOwnProps>= (props) => {
     return (
         <>
         <form onSubmit={props.handleSubmit} className={style.loginFormField}>
@@ -13,7 +18,7 @@ const LoginForm = (props) => {
             <Field className={style.formInput} component={Input} type={'password'} placeholder={'password'} validate={[required]} name={'loginPassword'}/>
             <div className={style.rememberMeContainer}>
                 <Field className={style.formInput} component={Input} type={'checkbox'} name={'rememberMe'} />
-                <label className={style.rememberMe} for={'rememberMe'}>Remember Me</label>
+                <label className={style.rememberMe} htmlFor ={'rememberMe'}>Remember Me</label>
             </div>
             {props.error && <div className={formsStyle.invalidFormData}>{props.error}</div>}
             <button className={style.submit}>Submit</button>
@@ -29,7 +34,7 @@ const LoginForm = (props) => {
     )
 };
 
-const loginReduxForm = reduxForm ({
+const loginReduxForm = reduxForm<loginFormValuesType, loginFormOwnProps> ({
     form: 'login'
 }) (LoginForm)
 
